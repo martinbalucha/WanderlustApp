@@ -1,0 +1,13 @@
+E:\Projekty\TravelLog\WanderlustInfrastructure\obj\Debug\netstandard2.0\WanderlustInfrastructure.csproj.AssemblyReference.cache
+E:\Projekty\TravelLog\WanderlustInfrastructure\obj\Debug\netstandard2.0\WanderlustInfrastructure.GeneratedMSBuildEditorConfig.editorconfig
+E:\Projekty\TravelLog\WanderlustInfrastructure\obj\Debug\netstandard2.0\WanderlustInfrastructure.AssemblyInfoInputs.cache
+E:\Projekty\TravelLog\WanderlustInfrastructure\obj\Debug\netstandard2.0\WanderlustInfrastructure.AssemblyInfo.cs
+E:\Projekty\TravelLog\WanderlustInfrastructure\obj\Debug\netstandard2.0\WanderlustInfrastructure.csproj.CoreCompileInputs.cache
+E:\Projekty\TravelLog\WanderlustInfrastructure\bin\Debug\netstandard2.0\WanderlustInfrastructure.deps.json
+E:\Projekty\TravelLog\WanderlustInfrastructure\bin\Debug\netstandard2.0\WanderlustInfrastructure.dll
+E:\Projekty\TravelLog\WanderlustInfrastructure\bin\Debug\netstandard2.0\WanderlustInfrastructure.pdb
+E:\Projekty\TravelLog\WanderlustInfrastructure\bin\Debug\netstandard2.0\WanderlustResource.dll
+E:\Projekty\TravelLog\WanderlustInfrastructure\bin\Debug\netstandard2.0\WanderlustResource.pdb
+E:\Projekty\TravelLog\WanderlustInfrastructure\obj\Debug\netstandard2.0\WanderlustInfrastructure.csproj.CopyComplete
+E:\Projekty\TravelLog\WanderlustInfrastructure\obj\Debug\netstandard2.0\WanderlustInfrastructure.dll
+E:\Projekty\TravelLog\WanderlustInfrastructure\obj\Debug\netstandard2.0\WanderlustInfrastructure.pdb

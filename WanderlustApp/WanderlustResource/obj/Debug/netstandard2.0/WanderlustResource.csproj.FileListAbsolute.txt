@@ -1,0 +1,14 @@
+E:\Projekty\TravelLog\WanderlustResource\bin\Debug\netstandard2.0\WanderlustResource.deps.json
+E:\Projekty\TravelLog\WanderlustResource\bin\Debug\netstandard2.0\WanderlustResource.dll
+E:\Projekty\TravelLog\WanderlustResource\bin\Debug\netstandard2.0\WanderlustResource.pdb
+E:\Projekty\TravelLog\WanderlustResource\obj\Debug\netstandard2.0\WanderlustResource.Backend.Exceptions.resources
+E:\Projekty\TravelLog\WanderlustResource\obj\Debug\netstandard2.0\WanderlustResource.Backend.Info.resources
+E:\Projekty\TravelLog\WanderlustResource\obj\Debug\netstandard2.0\WanderlustResource.Backend.Warning.resources
+E:\Projekty\TravelLog\WanderlustResource\obj\Debug\netstandard2.0\WanderlustResource.csproj.GenerateResource.cache
+E:\Projekty\TravelLog\WanderlustResource\obj\Debug\netstandard2.0\WanderlustResource.GeneratedMSBuildEditorConfig.editorconfig
+E:\Projekty\TravelLog\WanderlustResource\obj\Debug\netstandard2.0\WanderlustResource.AssemblyInfoInputs.cache
+E:\Projekty\TravelLog\WanderlustResource\obj\Debug\netstandard2.0\WanderlustResource.AssemblyInfo.cs
+E:\Projekty\TravelLog\WanderlustResource\obj\Debug\netstandard2.0\WanderlustResource.csproj.CoreCompileInputs.cache
+E:\Projekty\TravelLog\WanderlustResource\obj\Debug\netstandard2.0\WanderlustResource.dll
+E:\Projekty\TravelLog\WanderlustResource\obj\Debug\netstandard2.0\WanderlustResource.pdb
+E:\Projekty\TravelLog\WanderlustResource\obj\Debug\netstandard2.0\WanderlustResource.csproj.AssemblyReference.cache

@@ -1,0 +1,9 @@
+E:\Projekty\TravelLog\TravelLogPersistence\bin\Debug\netstandard2.1\TravelLogPersistence.deps.json
+E:\Projekty\TravelLog\TravelLogPersistence\bin\Debug\netstandard2.1\TravelLogPersistence.dll
+E:\Projekty\TravelLog\TravelLogPersistence\bin\Debug\netstandard2.1\TravelLogPersistence.pdb
+E:\Projekty\TravelLog\TravelLogPersistence\obj\Debug\netstandard2.1\TravelLogPersistence.GeneratedMSBuildEditorConfig.editorconfig
+E:\Projekty\TravelLog\TravelLogPersistence\obj\Debug\netstandard2.1\TravelLogPersistence.AssemblyInfoInputs.cache
+E:\Projekty\TravelLog\TravelLogPersistence\obj\Debug\netstandard2.1\TravelLogPersistence.AssemblyInfo.cs
+E:\Projekty\TravelLog\TravelLogPersistence\obj\Debug\netstandard2.1\TravelLogPersistence.csproj.CoreCompileInputs.cache
+E:\Projekty\TravelLog\TravelLogPersistence\obj\Debug\netstandard2.1\TravelLogPersistence.dll
+E:\Projekty\TravelLog\TravelLogPersistence\obj\Debug\netstandard2.1\TravelLogPersistence.pdb

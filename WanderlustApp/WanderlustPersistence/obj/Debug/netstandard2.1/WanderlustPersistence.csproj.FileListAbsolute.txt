@@ -1,0 +1,15 @@
+E:\Projekty\TravelLog\WanderlustPersistence\bin\Debug\netstandard2.1\WanderlustPersistence.deps.json
+E:\Projekty\TravelLog\WanderlustPersistence\bin\Debug\netstandard2.1\WanderlustPersistence.dll
+E:\Projekty\TravelLog\WanderlustPersistence\bin\Debug\netstandard2.1\WanderlustPersistence.pdb
+E:\Projekty\TravelLog\WanderlustPersistence\obj\Debug\netstandard2.1\WanderlustPersistence.GeneratedMSBuildEditorConfig.editorconfig
+E:\Projekty\TravelLog\WanderlustPersistence\obj\Debug\netstandard2.1\WanderlustPersistence.AssemblyInfoInputs.cache
+E:\Projekty\TravelLog\WanderlustPersistence\obj\Debug\netstandard2.1\WanderlustPersistence.AssemblyInfo.cs
+E:\Projekty\TravelLog\WanderlustPersistence\obj\Debug\netstandard2.1\WanderlustPersistence.csproj.CoreCompileInputs.cache
+E:\Projekty\TravelLog\WanderlustPersistence\obj\Debug\netstandard2.1\WanderlustPersistence.dll
+E:\Projekty\TravelLog\WanderlustPersistence\obj\Debug\netstandard2.1\WanderlustPersistence.pdb
+E:\Projekty\TravelLog\WanderlustPersistence\bin\Debug\netstandard2.1\WanderlustResource.dll
+E:\Projekty\TravelLog\WanderlustPersistence\bin\Debug\netstandard2.1\WanderlustResource.pdb
+E:\Projekty\TravelLog\WanderlustPersistence\obj\Debug\netstandard2.1\WanderlustPersistence.csproj.AssemblyReference.cache
+E:\Projekty\TravelLog\WanderlustPersistence\obj\Debug\netstandard2.1\WanderlustPersistence.csproj.CopyComplete
+E:\Projekty\TravelLog\WanderlustPersistence\bin\Debug\netstandard2.1\WanderlustInfrastructure.dll
+E:\Projekty\TravelLog\WanderlustPersistence\bin\Debug\netstandard2.1\WanderlustInfrastructure.pdb

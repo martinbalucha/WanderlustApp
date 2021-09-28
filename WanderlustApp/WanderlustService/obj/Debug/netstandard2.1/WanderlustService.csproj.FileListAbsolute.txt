@@ -1,0 +1,17 @@
+E:\Projekty\TravelLog\WanderlustService\bin\Debug\netstandard2.1\WanderlustService.deps.json
+E:\Projekty\TravelLog\WanderlustService\bin\Debug\netstandard2.1\WanderlustService.dll
+E:\Projekty\TravelLog\WanderlustService\bin\Debug\netstandard2.1\WanderlustService.pdb
+E:\Projekty\TravelLog\WanderlustService\bin\Debug\netstandard2.1\WanderlustPersistence.dll
+E:\Projekty\TravelLog\WanderlustService\bin\Debug\netstandard2.1\WanderlustPersistence.pdb
+E:\Projekty\TravelLog\WanderlustService\obj\Debug\netstandard2.1\WanderlustService.csproj.AssemblyReference.cache
+E:\Projekty\TravelLog\WanderlustService\obj\Debug\netstandard2.1\WanderlustService.GeneratedMSBuildEditorConfig.editorconfig
+E:\Projekty\TravelLog\WanderlustService\obj\Debug\netstandard2.1\WanderlustService.AssemblyInfoInputs.cache
+E:\Projekty\TravelLog\WanderlustService\obj\Debug\netstandard2.1\WanderlustService.AssemblyInfo.cs
+E:\Projekty\TravelLog\WanderlustService\obj\Debug\netstandard2.1\WanderlustService.csproj.CoreCompileInputs.cache
+E:\Projekty\TravelLog\WanderlustService\obj\Debug\netstandard2.1\WanderlustService.csproj.CopyComplete
+E:\Projekty\TravelLog\WanderlustService\obj\Debug\netstandard2.1\WanderlustService.dll
+E:\Projekty\TravelLog\WanderlustService\obj\Debug\netstandard2.1\WanderlustService.pdb
+E:\Projekty\TravelLog\WanderlustService\bin\Debug\netstandard2.1\WanderlustResource.dll
+E:\Projekty\TravelLog\WanderlustService\bin\Debug\netstandard2.1\WanderlustResource.pdb
+E:\Projekty\TravelLog\WanderlustService\bin\Debug\netstandard2.1\WanderlustInfrastructure.dll
+E:\Projekty\TravelLog\WanderlustService\bin\Debug\netstandard2.1\WanderlustInfrastructure.pdb
