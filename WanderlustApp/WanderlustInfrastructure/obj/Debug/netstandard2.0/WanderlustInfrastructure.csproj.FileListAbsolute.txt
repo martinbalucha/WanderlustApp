@@ -11,3 +11,16 @@ E:\Projekty\TravelLog\WanderlustInfrastructure\bin\Debug\netstandard2.0\Wanderlu
 E:\Projekty\TravelLog\WanderlustInfrastructure\obj\Debug\netstandard2.0\WanderlustInfrastructure.csproj.CopyComplete
 E:\Projekty\TravelLog\WanderlustInfrastructure\obj\Debug\netstandard2.0\WanderlustInfrastructure.dll
 E:\Projekty\TravelLog\WanderlustInfrastructure\obj\Debug\netstandard2.0\WanderlustInfrastructure.pdb
+e:\Projekty\WanderlustApp\WanderlustApp\WanderlustInfrastructure\bin\Debug\netstandard2.0\WanderlustInfrastructure.deps.json
+e:\Projekty\WanderlustApp\WanderlustApp\WanderlustInfrastructure\bin\Debug\netstandard2.0\WanderlustInfrastructure.dll
+e:\Projekty\WanderlustApp\WanderlustApp\WanderlustInfrastructure\bin\Debug\netstandard2.0\WanderlustInfrastructure.pdb
+e:\Projekty\WanderlustApp\WanderlustApp\WanderlustInfrastructure\bin\Debug\netstandard2.0\WanderlustResource.dll
+e:\Projekty\WanderlustApp\WanderlustApp\WanderlustInfrastructure\bin\Debug\netstandard2.0\WanderlustResource.pdb
+e:\Projekty\WanderlustApp\WanderlustApp\WanderlustInfrastructure\obj\Debug\netstandard2.0\WanderlustInfrastructure.csproj.AssemblyReference.cache
+e:\Projekty\WanderlustApp\WanderlustApp\WanderlustInfrastructure\obj\Debug\netstandard2.0\WanderlustInfrastructure.GeneratedMSBuildEditorConfig.editorconfig
+e:\Projekty\WanderlustApp\WanderlustApp\WanderlustInfrastructure\obj\Debug\netstandard2.0\WanderlustInfrastructure.AssemblyInfoInputs.cache
+e:\Projekty\WanderlustApp\WanderlustApp\WanderlustInfrastructure\obj\Debug\netstandard2.0\WanderlustInfrastructure.AssemblyInfo.cs
+e:\Projekty\WanderlustApp\WanderlustApp\WanderlustInfrastructure\obj\Debug\netstandard2.0\WanderlustInfrastructure.csproj.CoreCompileInputs.cache
+e:\Projekty\WanderlustApp\WanderlustApp\WanderlustInfrastructure\obj\Debug\netstandard2.0\WanderlustInfrastructure.csproj.CopyComplete
+e:\Projekty\WanderlustApp\WanderlustApp\WanderlustInfrastructure\obj\Debug\netstandard2.0\WanderlustInfrastructure.dll
+e:\Projekty\WanderlustApp\WanderlustApp\WanderlustInfrastructure\obj\Debug\netstandard2.0\WanderlustInfrastructure.pdb

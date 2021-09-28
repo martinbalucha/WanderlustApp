@@ -3134,11 +3134,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Projekty\\TravelLog\\WanderlustRest\\WanderlustRest.csproj",
+      "projectUniqueName": "e:\\Projekty\\WanderlustApp\\WanderlustApp\\WanderlustRest\\WanderlustRest.csproj",
       "projectName": "WanderlustRest",
-      "projectPath": "E:\\Projekty\\TravelLog\\WanderlustRest\\WanderlustRest.csproj",
+      "projectPath": "e:\\Projekty\\WanderlustApp\\WanderlustApp\\WanderlustRest\\WanderlustRest.csproj",
       "packagesPath": "C:\\Users\\Martin\\.nuget\\packages\\",
-      "outputPath": "E:\\Projekty\\TravelLog\\WanderlustRest\\obj\\",
+      "outputPath": "e:\\Projekty\\WanderlustApp\\WanderlustApp\\WanderlustRest\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Martin\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -3155,14 +3155,14 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "E:\\Projekty\\TravelLog\\WanderlustPersistence\\WanderlustPersistence.csproj": {
-              "projectPath": "E:\\Projekty\\TravelLog\\WanderlustPersistence\\WanderlustPersistence.csproj"
+            "e:\\Projekty\\WanderlustApp\\WanderlustApp\\WanderlustPersistence\\WanderlustPersistence.csproj": {
+              "projectPath": "e:\\Projekty\\WanderlustApp\\WanderlustApp\\WanderlustPersistence\\WanderlustPersistence.csproj"
             },
-            "E:\\Projekty\\TravelLog\\WanderlustResource\\WanderlustResource.csproj": {
-              "projectPath": "E:\\Projekty\\TravelLog\\WanderlustResource\\WanderlustResource.csproj"
+            "e:\\Projekty\\WanderlustApp\\WanderlustApp\\WanderlustResource\\WanderlustResource.csproj": {
+              "projectPath": "e:\\Projekty\\WanderlustApp\\WanderlustApp\\WanderlustResource\\WanderlustResource.csproj"
             },
-            "E:\\Projekty\\TravelLog\\WanderlustService\\WanderlustService.csproj": {
-              "projectPath": "E:\\Projekty\\TravelLog\\WanderlustService\\WanderlustService.csproj"
+            "e:\\Projekty\\WanderlustApp\\WanderlustApp\\WanderlustService\\WanderlustService.csproj": {
+              "projectPath": "e:\\Projekty\\WanderlustApp\\WanderlustApp\\WanderlustService\\WanderlustService.csproj"
             }
           }
         }

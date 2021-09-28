@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "kaHzT4p0uAPbgtFg12LkkUFUFjvAJNuIcbbhZCwHIyL4IYyxftfUU+oYbpldo3YOCFKlSC057EBmZlxmaWPR2A==",
+  "dgSpecHash": "06cHItc313glOfgxNZ8lF5wfVvHNH+/+3wWDl0zBtbueDVkIOal0uFzA0vysTF5PQ1BDMS72MWZdASH3XkjedQ==",
   "success": true,
-  "projectFilePath": "E:\\Projekty\\TravelLog\\WanderlustResource\\WanderlustResource.csproj",
+  "projectFilePath": "e:\\Projekty\\WanderlustApp\\WanderlustApp\\WanderlustResource\\WanderlustResource.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Martin\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\Martin\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"

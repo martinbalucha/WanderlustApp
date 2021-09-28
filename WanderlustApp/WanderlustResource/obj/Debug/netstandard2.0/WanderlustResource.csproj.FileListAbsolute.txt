@@ -12,3 +12,17 @@ E:\Projekty\TravelLog\WanderlustResource\obj\Debug\netstandard2.0\WanderlustReso
 E:\Projekty\TravelLog\WanderlustResource\obj\Debug\netstandard2.0\WanderlustResource.dll
 E:\Projekty\TravelLog\WanderlustResource\obj\Debug\netstandard2.0\WanderlustResource.pdb
 E:\Projekty\TravelLog\WanderlustResource\obj\Debug\netstandard2.0\WanderlustResource.csproj.AssemblyReference.cache
+e:\Projekty\WanderlustApp\WanderlustApp\WanderlustResource\bin\Debug\netstandard2.0\WanderlustResource.deps.json
+e:\Projekty\WanderlustApp\WanderlustApp\WanderlustResource\bin\Debug\netstandard2.0\WanderlustResource.dll
+e:\Projekty\WanderlustApp\WanderlustApp\WanderlustResource\bin\Debug\netstandard2.0\WanderlustResource.pdb
+e:\Projekty\WanderlustApp\WanderlustApp\WanderlustResource\obj\Debug\netstandard2.0\WanderlustResource.csproj.AssemblyReference.cache
+e:\Projekty\WanderlustApp\WanderlustApp\WanderlustResource\obj\Debug\netstandard2.0\WanderlustResource.Backend.Exceptions.resources
+e:\Projekty\WanderlustApp\WanderlustApp\WanderlustResource\obj\Debug\netstandard2.0\WanderlustResource.Backend.Info.resources
+e:\Projekty\WanderlustApp\WanderlustApp\WanderlustResource\obj\Debug\netstandard2.0\WanderlustResource.Backend.Warning.resources
+e:\Projekty\WanderlustApp\WanderlustApp\WanderlustResource\obj\Debug\netstandard2.0\WanderlustResource.csproj.GenerateResource.cache
+e:\Projekty\WanderlustApp\WanderlustApp\WanderlustResource\obj\Debug\netstandard2.0\WanderlustResource.GeneratedMSBuildEditorConfig.editorconfig
+e:\Projekty\WanderlustApp\WanderlustApp\WanderlustResource\obj\Debug\netstandard2.0\WanderlustResource.AssemblyInfoInputs.cache
+e:\Projekty\WanderlustApp\WanderlustApp\WanderlustResource\obj\Debug\netstandard2.0\WanderlustResource.AssemblyInfo.cs
+e:\Projekty\WanderlustApp\WanderlustApp\WanderlustResource\obj\Debug\netstandard2.0\WanderlustResource.csproj.CoreCompileInputs.cache
+e:\Projekty\WanderlustApp\WanderlustApp\WanderlustResource\obj\Debug\netstandard2.0\WanderlustResource.dll
+e:\Projekty\WanderlustApp\WanderlustApp\WanderlustResource\obj\Debug\netstandard2.0\WanderlustResource.pdb

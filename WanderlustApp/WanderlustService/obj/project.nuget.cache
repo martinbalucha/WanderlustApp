@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "/q3YlnAb/RkQPys8Gh2Y08mdEGEucGPFqctDURF6fKbxkaRQMCtull1ah240I64gYkOKsKXZmbiV+OyoRv5+vw==",
+  "dgSpecHash": "TAAH7kKdQJbEIeQsnjMIsVaX88BJhKV1eMxBtP+xRFRYhVTw423DABHyEFbDbm/B9dhPiZiAZLtE2nLPlaKzsQ==",
   "success": true,
-  "projectFilePath": "E:\\Projekty\\TravelLog\\WanderlustService\\WanderlustService.csproj",
+  "projectFilePath": "e:\\Projekty\\WanderlustApp\\WanderlustApp\\WanderlustService\\WanderlustService.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Martin\\.nuget\\packages\\autofac\\6.2.0\\autofac.6.2.0.nupkg.sha512",
     "C:\\Users\\Martin\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
