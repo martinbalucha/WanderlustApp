@@ -140,3 +140,5 @@ e:\Projekty\WanderlustApp\WanderlustApp\WanderlustRest\obj\Debug\netcoreapp3.1\s
 e:\Projekty\WanderlustApp\WanderlustApp\WanderlustRest\obj\Debug\netcoreapp3.1\WanderlustRest.RazorTargetAssemblyInfo.cache
 e:\Projekty\WanderlustApp\WanderlustApp\WanderlustRest\obj\Debug\netcoreapp3.1\WanderlustRest.csproj.CopyComplete
 e:\Projekty\WanderlustApp\WanderlustApp\WanderlustRest\obj\Debug\netcoreapp3.1\WanderlustRest.genruntimeconfig.cache
+e:\Projekty\WanderlustApp\WanderlustApp\WanderlustRest\bin\Debug\netcoreapp3.1\logs\log20210928.json
+e:\Projekty\WanderlustApp\WanderlustApp\WanderlustRest\bin\Debug\netcoreapp3.1\logs\log20210929.json

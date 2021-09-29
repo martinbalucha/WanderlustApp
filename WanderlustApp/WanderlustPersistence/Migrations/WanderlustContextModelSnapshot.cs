@@ -9,7 +9,7 @@ using WanderlustPersistence.Infrastructure;
 namespace WanderlustPersistence.Migrations
 {
     [DbContext(typeof(WanderlustContext))]
-    partial class TravelLogContextModelSnapshot : ModelSnapshot
+    partial class WanderlustContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {

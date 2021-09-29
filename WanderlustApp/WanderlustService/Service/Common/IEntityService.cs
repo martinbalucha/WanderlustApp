@@ -29,13 +29,13 @@ namespace WanderlustService.Service.Common
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        Task<TEntity> FindAsync(long id);
+        Task<TEntity> FindAsync(Guid id);
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        Task DeleteAsync(long id);
+        Task DeleteAsync(Guid id);
     }
 }

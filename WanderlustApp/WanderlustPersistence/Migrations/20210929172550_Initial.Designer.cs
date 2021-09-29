@@ -10,8 +10,8 @@ using WanderlustPersistence.Infrastructure;
 namespace WanderlustPersistence.Migrations
 {
     [DbContext(typeof(WanderlustContext))]
-    [Migration("20210920122319_ManyToManyRelationship")]
-    partial class ManyToManyRelationship
+    [Migration("20210929172550_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,11 +23,11 @@ namespace WanderlustPersistence.Migrations
 
             modelBuilder.Entity("CountryRegionComponent", b =>
                 {
-                    b.Property<long>("CountryId")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("CountryId")
+                        .HasColumnType("uuid");
 
-                    b.Property<long>("RegionsId")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("RegionsId")
+                        .HasColumnType("uuid");
 
                     b.HasKey("CountryId", "RegionsId");
 
@@ -38,11 +38,11 @@ namespace WanderlustPersistence.Migrations
 
             modelBuilder.Entity("CountryTraditionalFood", b =>
                 {
-                    b.Property<long>("CountryId")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("CountryId")
+                        .HasColumnType("uuid");
 
-                    b.Property<long>("TypicalFoodsId")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("TypicalFoodsId")
+                        .HasColumnType("uuid");
 
                     b.HasKey("CountryId", "TypicalFoodsId");
 
@@ -53,11 +53,11 @@ namespace WanderlustPersistence.Migrations
 
             modelBuilder.Entity("CountryUser", b =>
                 {
-                    b.Property<long>("CountriesVisitedId")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("CountriesVisitedId")
+                        .HasColumnType("uuid");
 
-                    b.Property<long>("VisitedByUsersId")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("VisitedByUsersId")
+                        .HasColumnType("uuid");
 
                     b.HasKey("CountriesVisitedId", "VisitedByUsersId");
 
@@ -68,11 +68,11 @@ namespace WanderlustPersistence.Migrations
 
             modelBuilder.Entity("RegionComponentUser", b =>
                 {
-                    b.Property<long>("RegionsVisitedId")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("RegionsVisitedId")
+                        .HasColumnType("uuid");
 
-                    b.Property<long>("VisitedByUsersId")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("VisitedByUsersId")
+                        .HasColumnType("uuid");
 
                     b.HasKey("RegionsVisitedId", "VisitedByUsersId");
 
@@ -83,11 +83,11 @@ namespace WanderlustPersistence.Migrations
 
             modelBuilder.Entity("TownUser", b =>
                 {
-                    b.Property<long>("TownsVisitedId")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("TownsVisitedId")
+                        .HasColumnType("uuid");
 
-                    b.Property<long>("VisitedByUsersId")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("VisitedByUsersId")
+                        .HasColumnType("uuid");
 
                     b.HasKey("TownsVisitedId", "VisitedByUsersId");
 
@@ -98,11 +98,11 @@ namespace WanderlustPersistence.Migrations
 
             modelBuilder.Entity("TraditionalFoodUser", b =>
                 {
-                    b.Property<long>("EatenByUsersId")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("EatenByUsersId")
+                        .HasColumnType("uuid");
 
-                    b.Property<long>("TraditionalFoodsEatenId")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("TraditionalFoodsEatenId")
+                        .HasColumnType("uuid");
 
                     b.HasKey("EatenByUsersId", "TraditionalFoodsEatenId");
 
@@ -113,15 +113,18 @@ namespace WanderlustPersistence.Migrations
 
             modelBuilder.Entity("WanderlustPersistence.Entity.Country", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+                        .HasColumnType("uuid");
 
                     b.Property<string>("Code")
                         .IsRequired()
                         .HasMaxLength(10)
                         .HasColumnType("character varying(10)");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(2500)
+                        .HasColumnType("character varying(2500)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -135,10 +138,9 @@ namespace WanderlustPersistence.Migrations
 
             modelBuilder.Entity("WanderlustPersistence.Entity.RegionComponent", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+                        .HasColumnType("uuid");
 
                     b.Property<string>("Description")
                         .HasColumnType("text");
@@ -147,8 +149,8 @@ namespace WanderlustPersistence.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<long?>("RegionId")
-                        .HasColumnType("bigint");
+                    b.Property<Guid?>("RegionId")
+                        .HasColumnType("uuid");
 
                     b.HasKey("Id");
 
@@ -161,10 +163,9 @@ namespace WanderlustPersistence.Migrations
 
             modelBuilder.Entity("WanderlustPersistence.Entity.Sight", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+                        .HasColumnType("uuid");
 
                     b.Property<string>("Description")
                         .HasMaxLength(2000)
@@ -178,11 +179,11 @@ namespace WanderlustPersistence.Migrations
                         .HasMaxLength(150)
                         .HasColumnType("character varying(150)");
 
-                    b.Property<long?>("RegionId")
-                        .HasColumnType("bigint");
+                    b.Property<Guid?>("RegionId")
+                        .HasColumnType("uuid");
 
-                    b.Property<long?>("TownId")
-                        .HasColumnType("bigint");
+                    b.Property<Guid?>("TownId")
+                        .HasColumnType("uuid");
 
                     b.HasKey("Id");
 
@@ -195,10 +196,9 @@ namespace WanderlustPersistence.Migrations
 
             modelBuilder.Entity("WanderlustPersistence.Entity.Town", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+                        .HasColumnType("uuid");
 
                     b.Property<string>("Description")
                         .HasMaxLength(2000)
@@ -208,8 +208,8 @@ namespace WanderlustPersistence.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<long?>("RegionId")
-                        .HasColumnType("bigint");
+                    b.Property<Guid?>("RegionId")
+                        .HasColumnType("uuid");
 
                     b.HasKey("Id");
 
@@ -220,10 +220,9 @@ namespace WanderlustPersistence.Migrations
 
             modelBuilder.Entity("WanderlustPersistence.Entity.TraditionalFood", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+                        .HasColumnType("uuid");
 
                     b.Property<string>("Description")
                         .HasMaxLength(2000)
@@ -244,10 +243,9 @@ namespace WanderlustPersistence.Migrations
 
             modelBuilder.Entity("WanderlustPersistence.Entity.User", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+                        .HasColumnType("uuid");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -288,8 +286,8 @@ namespace WanderlustPersistence.Migrations
                 {
                     b.HasBaseType("WanderlustPersistence.Entity.RegionComponent");
 
-                    b.Property<long?>("CapitalId")
-                        .HasColumnType("bigint");
+                    b.Property<Guid?>("CapitalId")
+                        .HasColumnType("uuid");
 
                     b.HasIndex("CapitalId");
 

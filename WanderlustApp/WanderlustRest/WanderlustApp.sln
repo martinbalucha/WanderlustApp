@@ -9,9 +9,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WanderlustService", "..\Wan
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WanderlustResource", "..\WanderlustResource\WanderlustResource.csproj", "{214E1096-7034-4E14-BBC5-47642CA55CB7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WanderlustRest", "..\WanderlustRest\WanderlustRest.csproj", "{7E301615-3F4B-4018-B7BF-FA18F1B9F4C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WanderlustRest", "WanderlustRest.csproj", "{7E301615-3F4B-4018-B7BF-FA18F1B9F4C0}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WanderlustInfrastructure", "..\WanderlustInfrastructure\WanderlustInfrastructure.csproj", "{6DEB910D-4E89-422B-B2D0-3A7C1EC0B8CC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{8D446D84-CBEB-4FB3-905A-5F4D89125850}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WanderlustPersistenceTest", "..\WanderlustPersistenceTest\WanderlustPersistenceTest.csproj", "{B73A4A9F-7906-455F-A08F-1AC51BCA99E8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,9 +43,16 @@ Global
 		{6DEB910D-4E89-422B-B2D0-3A7C1EC0B8CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6DEB910D-4E89-422B-B2D0-3A7C1EC0B8CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6DEB910D-4E89-422B-B2D0-3A7C1EC0B8CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B73A4A9F-7906-455F-A08F-1AC51BCA99E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B73A4A9F-7906-455F-A08F-1AC51BCA99E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B73A4A9F-7906-455F-A08F-1AC51BCA99E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B73A4A9F-7906-455F-A08F-1AC51BCA99E8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B73A4A9F-7906-455F-A08F-1AC51BCA99E8} = {8D446D84-CBEB-4FB3-905A-5F4D89125850}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {96D38349-E90E-49F9-80B9-54F963A7B87A}

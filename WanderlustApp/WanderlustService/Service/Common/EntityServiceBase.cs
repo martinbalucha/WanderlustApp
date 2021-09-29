@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using System;
 using System.Threading.Tasks;
 using WanderlustInfrastructure.Entity;
 using WanderlustInfrastructure.Repository;
@@ -55,7 +56,7 @@ namespace WanderlustService.Service.Common
         /// </summary>
         /// <param name="id">ID of the wanted entity</param>
         /// <returns>An entity with the given ID. Null, if no such entity exists</returns>
-        public async Task<TEntity> FindAsync(long id)
+        public async Task<TEntity> FindAsync(Guid id)
         {
             return await repository.FindAsync(id);
         }
@@ -65,7 +66,7 @@ namespace WanderlustService.Service.Common
         /// </summary>
         /// <param name="id">ID of an entity that is to be deleted</param>
         /// <returns>Task</returns>
-        public async Task DeleteAsync(long id)
+        public async Task DeleteAsync(Guid id)
         {
             await repository.DeleteAsync(id);
         }

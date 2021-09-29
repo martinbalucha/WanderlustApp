@@ -1,5 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace WanderlustInfrastructure.Entity
 {
@@ -11,7 +11,7 @@ namespace WanderlustInfrastructure.Entity
         /// <summary>
         /// ID of an entity
         /// </summary>
-        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public long Id { get; set; }
+        [Key]
+        public Guid Id { get; set; }
     }
 }

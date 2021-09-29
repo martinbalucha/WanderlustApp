@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Threading.Tasks;
 using WanderlustInfrastructure.Entity;
 using WanderlustInfrastructure.Repository;
@@ -28,24 +29,26 @@ namespace WanderlustPersistence.Repository
         /// <summary>
         /// Ctor
         /// </summary>
-        /// <param name="context">Database access context</param>
-        public EntityFrameworkRepository(IUnitOfWorkContext context)
+        /// <param name="unitOfWorkContext">Database access context</param>
+        public EntityFrameworkRepository(IUnitOfWorkContext unitOfWorkContext)
         {
-            this.unitOfWorkContext = context;
+            this.unitOfWorkContext = unitOfWorkContext;
         }
 
         /// <summary>
         /// <inheritdoc/>
         /// </summary>
-        public async Task CreateAsync(TEntity entity)
+        public async Task<Guid> CreateAsync(TEntity entity)
         {
+            entity.Id = Guid.NewGuid();
             await Context.Set<TEntity>().AddAsync(entity);
+            return entity.Id;
         }
 
         /// <summary>
         /// <inheritdoc/>
         /// </summary>
-        public async Task DeleteAsync(long id)
+        public async Task DeleteAsync(Guid id)
         {
             TEntity entity = await FindAsync(id);
             Context.Set<TEntity>().Remove(entity);
@@ -54,7 +57,7 @@ namespace WanderlustPersistence.Repository
         /// <summary>
         /// <inheritdoc/>
         /// </summary>
-        public async Task<TEntity> FindAsync(long id)
+        public async Task<TEntity> FindAsync(Guid id)
         {
             return await Context.Set<TEntity>().FindAsync(id);
         }

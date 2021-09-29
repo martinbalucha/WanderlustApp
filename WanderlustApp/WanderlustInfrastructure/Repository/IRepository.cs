@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using WanderlustInfrastructure.Entity;
 
 namespace WanderlustInfrastructure.Repository
@@ -12,8 +13,8 @@ namespace WanderlustInfrastructure.Repository
         /// Asynchronically creates a new entity
         /// </summary>
         /// <param name="entity">A new entity</param>
-        /// <returns>Task</returns>
-        Task CreateAsync(TEntity entity);
+        /// <returns>Guid of a new entity</returns>
+        Task<Guid> CreateAsync(TEntity entity);
 
         /// <summary>
         /// Updates an entity
@@ -26,13 +27,13 @@ namespace WanderlustInfrastructure.Repository
         /// </summary>
         /// <param name="id">ID of the wanted entity</param>
         /// <returns>Entity with the given ID. Null, if no such entity exists</returns>
-        Task<TEntity> FindAsync(long id);
+        Task<TEntity> FindAsync(Guid id);
 
         /// <summary>
         /// Asynchronically removes an entity from the database
         /// </summary>
         /// <param name="id">ID of an entity that is to be removed</param>
         /// <returns>Task</returns>
-        Task DeleteAsync(long id);
+        Task DeleteAsync(Guid id);
     }
 }
