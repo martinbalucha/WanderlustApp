@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "xMZ0wLjbHSpenc3Gq8p0QEa3ET19xpCsOBa7KdByqeAKKgjemYJLW2f1tQcG4YZqpmGsv/oN8+CxVkONu9PEtA==",
+  "dgSpecHash": "u2eG2UmIUJ0FqqFg2gTcVVa6FkEkHKnbRC6OucjtQMkR+EKke1nlJsudnwF2dT9Wc2cl7J9t2hYG41B+gSvnjg==",
   "success": true,
-  "projectFilePath": "e:\\Projekty\\WanderlustApp\\WanderlustApp\\WanderlustPersistence\\WanderlustPersistence.csproj",
+  "projectFilePath": "E:\\Projekty\\WanderlustApp\\WanderlustApp\\WanderlustPersistence\\WanderlustPersistence.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Martin\\.nuget\\packages\\autofac\\6.2.0\\autofac.6.2.0.nupkg.sha512",
     "C:\\Users\\Martin\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.0.0\\microsoft.bcl.asyncinterfaces.1.0.0.nupkg.sha512",
