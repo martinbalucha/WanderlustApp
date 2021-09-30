@@ -1138,11 +1138,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "e:\\Projekty\\WanderlustApp\\WanderlustApp\\WanderlustPersistence\\WanderlustPersistence.csproj",
+      "projectUniqueName": "E:\\Projekty\\WanderlustApp\\WanderlustApp\\WanderlustPersistence\\WanderlustPersistence.csproj",
       "projectName": "WanderlustPersistence",
-      "projectPath": "e:\\Projekty\\WanderlustApp\\WanderlustApp\\WanderlustPersistence\\WanderlustPersistence.csproj",
+      "projectPath": "E:\\Projekty\\WanderlustApp\\WanderlustApp\\WanderlustPersistence\\WanderlustPersistence.csproj",
       "packagesPath": "C:\\Users\\Martin\\.nuget\\packages\\",
-      "outputPath": "e:\\Projekty\\WanderlustApp\\WanderlustApp\\WanderlustPersistence\\obj\\",
+      "outputPath": "E:\\Projekty\\WanderlustApp\\WanderlustApp\\WanderlustPersistence\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Martin\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -1159,11 +1159,11 @@
         "netstandard2.1": {
           "targetAlias": "netstandard2.1",
           "projectReferences": {
-            "e:\\Projekty\\WanderlustApp\\WanderlustApp\\WanderlustInfrastructure\\WanderlustInfrastructure.csproj": {
-              "projectPath": "e:\\Projekty\\WanderlustApp\\WanderlustApp\\WanderlustInfrastructure\\WanderlustInfrastructure.csproj"
+            "E:\\Projekty\\WanderlustApp\\WanderlustApp\\WanderlustInfrastructure\\WanderlustInfrastructure.csproj": {
+              "projectPath": "E:\\Projekty\\WanderlustApp\\WanderlustApp\\WanderlustInfrastructure\\WanderlustInfrastructure.csproj"
             },
-            "e:\\Projekty\\WanderlustApp\\WanderlustApp\\WanderlustResource\\WanderlustResource.csproj": {
-              "projectPath": "e:\\Projekty\\WanderlustApp\\WanderlustApp\\WanderlustResource\\WanderlustResource.csproj"
+            "E:\\Projekty\\WanderlustApp\\WanderlustApp\\WanderlustResource\\WanderlustResource.csproj": {
+              "projectPath": "E:\\Projekty\\WanderlustApp\\WanderlustApp\\WanderlustResource\\WanderlustResource.csproj"
             }
           }
         }

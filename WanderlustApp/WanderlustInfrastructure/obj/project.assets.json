@@ -662,11 +662,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "e:\\Projekty\\WanderlustApp\\WanderlustApp\\WanderlustInfrastructure\\WanderlustInfrastructure.csproj",
+      "projectUniqueName": "E:\\Projekty\\WanderlustApp\\WanderlustApp\\WanderlustInfrastructure\\WanderlustInfrastructure.csproj",
       "projectName": "WanderlustInfrastructure",
-      "projectPath": "e:\\Projekty\\WanderlustApp\\WanderlustApp\\WanderlustInfrastructure\\WanderlustInfrastructure.csproj",
+      "projectPath": "E:\\Projekty\\WanderlustApp\\WanderlustApp\\WanderlustInfrastructure\\WanderlustInfrastructure.csproj",
       "packagesPath": "C:\\Users\\Martin\\.nuget\\packages\\",
-      "outputPath": "e:\\Projekty\\WanderlustApp\\WanderlustApp\\WanderlustInfrastructure\\obj\\",
+      "outputPath": "E:\\Projekty\\WanderlustApp\\WanderlustApp\\WanderlustInfrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Martin\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -683,8 +683,8 @@
         "netstandard2.0": {
           "targetAlias": "netstandard2.0",
           "projectReferences": {
-            "e:\\Projekty\\WanderlustApp\\WanderlustApp\\WanderlustResource\\WanderlustResource.csproj": {
-              "projectPath": "e:\\Projekty\\WanderlustApp\\WanderlustApp\\WanderlustResource\\WanderlustResource.csproj"
+            "E:\\Projekty\\WanderlustApp\\WanderlustApp\\WanderlustResource\\WanderlustResource.csproj": {
+              "projectPath": "E:\\Projekty\\WanderlustApp\\WanderlustApp\\WanderlustResource\\WanderlustResource.csproj"
             }
           }
         }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "IrTetiPSu47mZJwdN8hO3gHLOedWt0w6UPj20wS+465oE4zdZaj2xj3Cels4wFoVaAnF4fOk6Eih2oYZYWAbyg==",
+  "dgSpecHash": "dwg9PT5kCkcMeNW0hShpV/H0gbSIoCERYqAIUcVuRdiQeIvrhlFILHo2Z05aqRUeBqYKo9bz19sMMsvNDpxM0Q==",
   "success": true,
-  "projectFilePath": "e:\\Projekty\\WanderlustApp\\WanderlustApp\\WanderlustRest\\WanderlustRest.csproj",
+  "projectFilePath": "E:\\Projekty\\WanderlustApp\\WanderlustApp\\WanderlustRest\\WanderlustRest.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Martin\\.nuget\\packages\\autofac\\6.2.0\\autofac.6.2.0.nupkg.sha512",
     "C:\\Users\\Martin\\.nuget\\packages\\autofac.extensions.dependencyinjection\\7.1.0\\autofac.extensions.dependencyinjection.7.1.0.nupkg.sha512",
