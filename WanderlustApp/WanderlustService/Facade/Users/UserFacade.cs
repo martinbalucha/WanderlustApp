@@ -48,6 +48,17 @@ namespace WanderlustService.Facade.Users
             }
         }
 
+        public async Task<UserDto> FindByUsernameAsync(string username)
+        {
+            using (IUnitOfWork unitOfWork = unitOfWorkContext.Create())
+            {
+                var user = await userService.FindByUsernameAsync(username);
+                var userDto = mapper.Map<UserDto>(user);
+                await unitOfWork.CommitAsync();
+                return userDto;
+            }
+        }
+
         public async Task RegisterAsync(UserRegisterDto userDto)
         {
             User user = mapper.Map<User>(userDto);

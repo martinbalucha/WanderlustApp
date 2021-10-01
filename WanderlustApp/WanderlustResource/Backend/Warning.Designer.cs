@@ -86,5 +86,14 @@ namespace WanderlustResource.Backend {
                 return ResourceManager.GetString("WLE003", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Incorrect username or password..
+        /// </summary>
+        public static string WLE004 {
+            get {
+                return ResourceManager.GetString("WLE004", resourceCulture);
+            }
+        }
     }
 }

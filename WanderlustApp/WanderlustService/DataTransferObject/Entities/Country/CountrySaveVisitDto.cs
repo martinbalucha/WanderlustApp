@@ -13,7 +13,8 @@ namespace WanderlustService.DataTransferObject.Entities.Country
         /// <summary>
         /// An ID of a country
         /// </summary>
-        public long CountryId { get; set; }
+        [Required]
+        public Guid CountryId { get; set; }
 
         /// <summary>
         /// A name of the user who marked the country as visited

@@ -1,8 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
+using WanderlustResource.Backend;
 using WanderlustService.DataTransferObject.Entities.User;
 using WanderlustService.Facade.Users;
 
@@ -40,7 +45,12 @@ namespace WanderlustRest.Controllers
             if (ModelState.IsValid)
             {
                 bool result = await userFacade.AuthentizeAsync(userDto);
-                return Ok(result);
+                if (result)
+                {
+                    var token = await GenerateTokenAsync(userDto.Username);
+                    return new ObjectResult(token);
+                }
+                return BadRequest(Warning.WLE004);
             }
 
             var failedValidations = ExtractErrorMessagesFromModelState();
@@ -63,6 +73,38 @@ namespace WanderlustRest.Controllers
 
             var failedValidations = ExtractErrorMessagesFromModelState();
             return BadRequest(failedValidations);
+        }
+
+        /// <summary>
+        /// Generates a new JWT token
+        /// </summary>
+        /// <param name="username">User's name</param>
+        /// <returns>Newly generated JavaScript Web Token (JWT)</returns>
+        private async Task<dynamic> GenerateTokenAsync(string username)
+        {
+            var user = await userFacade.FindByUsernameAsync(username);
+
+            IList<Claim> claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.Name, username),
+                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                new Claim(JwtRegisteredClaimNames.Nbf, new DateTimeOffset(DateTime.Now).ToUnixTimeSeconds().ToString()),
+                new Claim(JwtRegisteredClaimNames.Exp, new DateTimeOffset(DateTime.Now.AddHours(4)).ToUnixTimeSeconds().ToString())
+            };
+
+            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("TOOD"));
+            var signingCredentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+            var header = new JwtHeader(signingCredentials);
+            var payload = new JwtPayload(claims);
+            var token = new JwtSecurityToken(header, payload);
+
+            var output = new
+            {
+                Access_Token = new JwtSecurityTokenHandler().WriteToken(token),
+                Username = username
+            };
+
+            return output;
         }
 
         /// <summary>

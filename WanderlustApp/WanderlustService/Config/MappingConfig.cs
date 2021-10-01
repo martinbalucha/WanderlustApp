@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using WanderlustPersistence.Entity;
 using WanderlustService.DataTransferObject.Entities.Country;
+using WanderlustService.DataTransferObject.Entities.User;
 
 namespace WanderlustService.Config
 {
@@ -17,6 +18,8 @@ namespace WanderlustService.Config
         {
             config.CreateMap<CountryCreateDto, Country>();
             config.CreateMap<CountryUpdateDto, Country>();
+
+            config.CreateMap<User, UserDto>();
         }
     }
 }

@@ -35,5 +35,12 @@ namespace WanderlustService.Facade.Users
         /// <param name="userDto">A DTO containing updated information</param>
         /// <returns>Task</returns>
         Task UpdateAsync(UserUpdateDto userDto);
+
+        /// <summary>
+        /// Asynchronously finds the user with the given name
+        /// </summary>
+        /// <param name="username">The name of the sought user</param>
+        /// <returns>The user who has the given username. Null, if no such user exists</returns>
+        Task<UserDto> FindByUsernameAsync(string username);
     }
 }
