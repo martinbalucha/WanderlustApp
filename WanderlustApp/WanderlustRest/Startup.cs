@@ -9,23 +9,15 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
-using WanderlustInfrastructure.Query;
-using WanderlustInfrastructure.Repository;
-using WanderlustInfrastructure.UnitOfWork;
-using WanderlustPersistence;
 using WanderlustPersistence.Infrastructure;
-using WanderlustPersistence.Infrastructure.Query;
-using WanderlustPersistence.Infrastructure.UnitOfWork;
-using WanderlustPersistence.Repository;
 using WanderlustService.Config;
-using WanderlustService.Service;
-using WanderlustService.Service.PasswordManagement;
-using WanderlustService.Service.QueryObject.Common;
 
 namespace WanderlustRest
 {
@@ -46,21 +38,26 @@ namespace WanderlustRest
                 options.UseNpgsql(Configuration.GetConnectionString("Postgres"));
             });
 
-            //services.AddTransient(typeof(IUnitOfWorkContext), typeof(EntityFrameworkUnitOfWorkContext));
-            //services.AddTransient(typeof(IQuery<>), typeof(EntityQuery<>));
-            //services.AddTransient(typeof(IRepository<>), typeof(EntityFrameworkRepository<>));
-
-
-
-            //services.AddTransient(typeof(IPasswordService), typeof(PBKDF2PasswordService));
-            //services.AddTransient(typeof(ICountryService), typeof(CountryService));
-
-            ////services.AddTransient(typeof(QueryObjectBase<,,>), );
-            
-
-            //services.AddSingleton<IMapper>(new Mapper(new MapperConfiguration(MappingConfig.ConfigureMapping)));
-
             services.AddControllers();
+
+            const string jwtBearer = "JwtBearer";
+            services.AddAuthentication(options =>
+            {                
+                options.DefaultAuthenticateScheme = jwtBearer;
+                options.DefaultChallengeScheme = jwtBearer;
+            })
+                .AddJwtBearer(jwtBearer, jwtBearerOptions =>
+                {
+                    jwtBearerOptions.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration.GetValue<string>("JWTSecretKey"))),
+                        ValidateIssuer = false,
+                        ValidateAudience = false,
+                        ValidateLifetime = true,
+                        ClockSkew = TimeSpan.FromMinutes(5)
+                    };                                    
+                });
         }
 
         /// <summary>
@@ -85,6 +82,7 @@ namespace WanderlustRest
             app.UseSerilogRequestLogging();
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

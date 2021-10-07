@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "e:\\Projekty\\WanderlustApp\\WanderlustApp\\WanderlustResource\\WanderlustResource.csproj": {}
+    "E:\\Projekty\\WanderlustApp\\WanderlustApp\\WanderlustResource\\WanderlustResource.csproj": {}
   },
   "projects": {
-    "e:\\Projekty\\WanderlustApp\\WanderlustApp\\WanderlustResource\\WanderlustResource.csproj": {
+    "E:\\Projekty\\WanderlustApp\\WanderlustApp\\WanderlustResource\\WanderlustResource.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "e:\\Projekty\\WanderlustApp\\WanderlustApp\\WanderlustResource\\WanderlustResource.csproj",
+        "projectUniqueName": "E:\\Projekty\\WanderlustApp\\WanderlustApp\\WanderlustResource\\WanderlustResource.csproj",
         "projectName": "WanderlustResource",
-        "projectPath": "e:\\Projekty\\WanderlustApp\\WanderlustApp\\WanderlustResource\\WanderlustResource.csproj",
+        "projectPath": "E:\\Projekty\\WanderlustApp\\WanderlustApp\\WanderlustResource\\WanderlustResource.csproj",
         "packagesPath": "C:\\Users\\Martin\\.nuget\\packages\\",
-        "outputPath": "e:\\Projekty\\WanderlustApp\\WanderlustApp\\WanderlustResource\\obj\\",
+        "outputPath": "E:\\Projekty\\WanderlustApp\\WanderlustApp\\WanderlustResource\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Martin\\AppData\\Roaming\\NuGet\\NuGet.Config",

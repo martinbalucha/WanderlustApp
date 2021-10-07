@@ -40,35 +40,30 @@ namespace WanderlustService.Facade.Countries
         public async Task CreateAsync(CountryCreateDto countryDto)
         {
             Country country = mapper.Map<Country>(countryDto);
-            using (IUnitOfWork unitOfWork = unitOfWorkContext.Create())
-            {
-                await countryService.CreateAsync(country);
-                await unitOfWork.CommitAsync();
-            }
+
+            IUnitOfWork unitOfWork = unitOfWorkContext.Create();
+            await countryService.CreateAsync(country);
+            await unitOfWork.CommitAsync();
         }
 
         public async Task SaveUserVisitAsync(CountrySaveVisitDto countryDto)
         {
-            using (IUnitOfWork unitOfWork = unitOfWorkContext.Create())
-            {
-                var visitedCountry = await countryService.FindAsync(countryDto.CountryId);
-                var visitingUser = await userService.FindByUsernameAsync(countryDto.Username);
+            IUnitOfWork unitOfWork = unitOfWorkContext.Create();
+            var visitedCountry = await countryService.FindAsync(countryDto.CountryId);
+            var visitingUser = await userService.FindByUsernameAsync(countryDto.Username);
 
-                visitedCountry.VisitedByUsers.Add(visitingUser);
-                countryService.Update(visitedCountry);
-                await unitOfWork.CommitAsync();
-            }
+            visitedCountry.VisitedByUsers.Add(visitingUser);
+            countryService.Update(visitedCountry);
+            await unitOfWork.CommitAsync();
         }
 
         public async Task UpdateAsync(CountryUpdateDto countryDto)
         {
-            using (IUnitOfWork unitOfWork = unitOfWorkContext.Create())
-            {
-                var storedCountry = await countryService.FindAsync(countryDto.Id);
-                mapper.Map(countryDto, storedCountry);
-                countryService.Update(storedCountry);
-                await unitOfWork.CommitAsync();
-            }
+            IUnitOfWork unitOfWork = unitOfWorkContext.Create();
+            var storedCountry = await countryService.FindAsync(countryDto.Id);
+            mapper.Map(countryDto, storedCountry);
+            countryService.Update(storedCountry);
+            await unitOfWork.CommitAsync();
         }
     }
 }

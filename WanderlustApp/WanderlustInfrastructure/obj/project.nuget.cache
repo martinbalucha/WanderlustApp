@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "EG2Jv4mpExMBo3d/pRMqlI23TfOdzMls8HH3JbfaY/XEnpF2tliRc2p7zTDoxDdAplJCk5aS8bNE0VNc6ZMeKw==",
+  "dgSpecHash": "bytuZip+z7YooGdxIrAF+xc4U/Vc/s5U9HolrSJKSJ18aB6lMbCdODcA8AZbVWPE99LeQlQbo5cNVDOHQ2i5KQ==",
   "success": true,
-  "projectFilePath": "e:\\Projekty\\WanderlustApp\\WanderlustApp\\WanderlustInfrastructure\\WanderlustInfrastructure.csproj",
+  "projectFilePath": "E:\\Projekty\\WanderlustApp\\WanderlustApp\\WanderlustInfrastructure\\WanderlustInfrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Martin\\.nuget\\packages\\autofac\\6.2.0\\autofac.6.2.0.nupkg.sha512",
     "C:\\Users\\Martin\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.0\\microsoft.bcl.asyncinterfaces.1.1.0.nupkg.sha512",

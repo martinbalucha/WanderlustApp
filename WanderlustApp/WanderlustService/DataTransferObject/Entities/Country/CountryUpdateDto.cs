@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace WanderlustService.DataTransferObject.Entities.Country
 {
@@ -10,7 +11,8 @@ namespace WanderlustService.DataTransferObject.Entities.Country
         /// <summary>
         /// ID of a country
         /// </summary>
-        public long Id { get; set; }
+        [Required]
+        public Guid Id { get; set; }
 
         /// <summary>
         /// The name of a country

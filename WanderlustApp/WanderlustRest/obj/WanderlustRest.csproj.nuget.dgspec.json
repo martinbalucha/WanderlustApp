@@ -263,6 +263,10 @@
               "target": "Package",
               "version": "[7.1.0, )"
             },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[3.1.19, )"
+            },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
@@ -288,6 +292,10 @@
             "Serilog.Settings.Configuration": {
               "target": "Package",
               "version": "[3.2.0, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[6.12.2, )"
             }
           },
           "imports": [

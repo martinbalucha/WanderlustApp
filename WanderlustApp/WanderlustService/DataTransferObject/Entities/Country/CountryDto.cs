@@ -1,4 +1,5 @@
-﻿
+﻿using System;
+
 namespace WanderlustService.DataTransferObject.Entities.Country
 {
     /// <summary>
@@ -9,7 +10,7 @@ namespace WanderlustService.DataTransferObject.Entities.Country
         /// <summary>
         /// ID of the country
         /// </summary>
-        public long Id { get; set; }
+        public Guid Id { get; set; }
 
         /// <summary>
         /// The name of the country

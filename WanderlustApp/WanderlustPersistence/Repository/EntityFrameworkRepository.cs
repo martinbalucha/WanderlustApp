@@ -67,7 +67,8 @@ namespace WanderlustPersistence.Repository
         /// </summary>
         public void Update(TEntity entity)
         {
-            Context.Set<TEntity>().Update(entity);
+            var storedEntity = Context.Set<TEntity>().Find(entity.Id);
+            Context.Entry(storedEntity).CurrentValues.SetValues(entity);
         }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace WanderlustService.DataTransferObject.Entities.User
@@ -8,17 +7,16 @@ namespace WanderlustService.DataTransferObject.Entities.User
     /// <summary>
     /// 
     /// </summary>
-    public class UserUpdateDto 
+    public class UserDto
     {
-        [Required]
+        /// <summary>
+        /// ID
+        /// </summary>
         public Guid Id { get; set; }
 
-        [EmailAddress]
-        public string Email { get; set; }
-
         /// <summary>
-        /// Role
+        /// Username
         /// </summary>
-        public int Role { get; set; } 
+        public string Username { get; set; }
     }
 }

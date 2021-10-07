@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using WanderlustInfrastructure.Entity;
+using WanderlustPersistence.Enums;
 
 namespace WanderlustPersistence.Entity
 {
@@ -18,8 +19,8 @@ namespace WanderlustPersistence.Entity
         /// <summary>
         /// Password's hash
         /// </summary>
-        [Required, MaxLength(250)]
-        public string PasswordHash { get; set; }
+        [Required, MaxLength(100)]
+        public string Password { get; set; }
 
         /// <summary>
         /// Hash's salt
@@ -34,9 +35,9 @@ namespace WanderlustPersistence.Entity
         public string Email { get; set; }
 
         /// <summary>
-        /// Sign whether the user is an admin
+        /// User's role in the system
         /// </summary>
-        public bool IsAdmin { get; set; }
+        public Role Role { get; set; }
 
         /// <summary>
         /// A set of countries the user has visited

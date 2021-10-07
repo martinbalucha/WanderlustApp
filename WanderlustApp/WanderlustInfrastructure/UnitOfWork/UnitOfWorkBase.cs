@@ -39,10 +39,5 @@ namespace WanderlustInfrastructure.UnitOfWork
         /// Performs the real commit work.
         /// </summary>
         protected abstract Task CommitCoreAsync();
-
-        /// <summary>
-        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
-        /// </summary>
-        public abstract void Dispose();
     }
 }
