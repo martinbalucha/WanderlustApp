@@ -29,11 +29,6 @@ namespace WanderlustPersistence.Infrastructure.UnitOfWork
             Context = context;
         }
 
-        public override void Dispose()
-        {
-            Context.Dispose();
-        }
-
         protected async override Task CommitCoreAsync()
         {
             await Context.SaveChangesAsync();

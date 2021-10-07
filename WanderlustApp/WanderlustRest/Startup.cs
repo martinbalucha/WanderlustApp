@@ -42,8 +42,7 @@ namespace WanderlustRest
 
             const string jwtBearer = "JwtBearer";
             services.AddAuthentication(options =>
-            {
-                
+            {                
                 options.DefaultAuthenticateScheme = jwtBearer;
                 options.DefaultChallengeScheme = jwtBearer;
             })
@@ -52,7 +51,7 @@ namespace WanderlustRest
                     jwtBearerOptions.TokenValidationParameters = new TokenValidationParameters
                     {
                         ValidateIssuerSigningKey = true,
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("TOOD")),
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration.GetValue<string>("JWTSecretKey"))),
                         ValidateIssuer = false,
                         ValidateAudience = false,
                         ValidateLifetime = true,
@@ -83,6 +82,7 @@ namespace WanderlustRest
             app.UseSerilogRequestLogging();
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

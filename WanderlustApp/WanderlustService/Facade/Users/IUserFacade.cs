@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using WanderlustService.DataTransferObject.Entities.User;
 
 namespace WanderlustService.Facade.Users
@@ -9,10 +10,10 @@ namespace WanderlustService.Facade.Users
     public interface IUserFacade
     {
         /// <summary>
-        /// Asynchronously attempts to authentize a user
+        /// Asynchronously attempts to authentize a user and return the user representation
         /// </summary>
         /// <param name="userDto">A DTO for a user attempting to log in</param>
-        /// <returns>True if the authentication was successful. Otherwise false</returns>
+        /// <returns>Result of the operation</returns>
         Task<bool> AuthentizeAsync(UserLoginDto userDto);
 
         /// <summary>

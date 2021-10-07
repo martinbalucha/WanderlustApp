@@ -20,6 +20,8 @@ namespace WanderlustService.Config
             config.CreateMap<CountryUpdateDto, Country>();
 
             config.CreateMap<User, UserDto>();
+            config.CreateMap<UserRegisterDto, User>();
+            config.CreateMap<UserUpdateDto, User>();
         }
     }
 }

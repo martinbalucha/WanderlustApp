@@ -19,12 +19,6 @@ namespace WanderlustInfrastructure.UnitOfWork
         /// </summary>
         public abstract IUnitOfWork Create();
 
-        public void Dispose()
-        {
-            unitOfWorkLocalInstance.Value?.Dispose();
-            unitOfWorkLocalInstance.Value = null;
-        }
-
         /// <summary>
         /// <inheritdoc/>
         /// </summary>

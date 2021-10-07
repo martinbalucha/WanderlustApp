@@ -19,7 +19,7 @@ namespace WanderlustPersistence
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterType(typeof(WanderlustContext)).As(typeof(DbContext)).InstancePerLifetimeScope();
+            builder.RegisterType(typeof(WanderlustContext)).As(typeof(DbContext)).InstancePerDependency();
             builder.RegisterType<EntityFrameworkUnitOfWorkContext>().As<IUnitOfWorkContext>().InstancePerLifetimeScope();
             builder.RegisterGeneric(typeof(EntityFrameworkRepository<>)).As(typeof(IRepository<>)).InstancePerDependency();
             builder.RegisterGeneric(typeof(EntityQuery<>)).As(typeof(IQuery<>)).InstancePerDependency();

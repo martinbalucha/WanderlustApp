@@ -6,7 +6,7 @@ namespace WanderlustInfrastructure.UnitOfWork
     /// <summary>
     /// Interfaces for a unit of work
     /// </summary>
-    public interface IUnitOfWork : IDisposable
+    public interface IUnitOfWork
     {
         /// <summary>
         /// Asynchronously commits the current transaction

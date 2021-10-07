@@ -56,7 +56,7 @@ namespace WanderlustService.Service.Entities.Users
                 return false;
             }
             
-            bool result = passwordService.VerifyHashedPassword(storedUser.PasswordHash, storedUser.Salt, password);
+            bool result = passwordService.VerifyHashedPassword(storedUser.Password, storedUser.Salt, password);
             if (!result)
             {
                 logger.LogWarning(string.Format(Warning.WLE002, username));
@@ -81,7 +81,7 @@ namespace WanderlustService.Service.Entities.Users
             }
 
             var hashedNewPassword = passwordService.CreateHash(newPassword);
-            storedUser.PasswordHash = hashedNewPassword.Item1;
+            storedUser.Password = hashedNewPassword.Item1;
             storedUser.Salt = hashedNewPassword.Item2;
 
             logger.LogInformation(string.Format(Info.ILE003, username));
@@ -109,8 +109,8 @@ namespace WanderlustService.Service.Entities.Users
                 throw new InvalidOperationException(string.Format(Exceptions.WLE011, user.Username));
             }
 
-            var (hash, salt) = passwordService.CreateHash(user.PasswordHash);
-            user.PasswordHash = hash;
+            var (hash, salt) = passwordService.CreateHash(user.Password);
+            user.Password = hash;
             user.Salt = salt;
 
             logger.LogInformation(string.Format(Info.ILE004, user.Username));

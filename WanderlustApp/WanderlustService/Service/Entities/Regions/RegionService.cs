@@ -25,12 +25,12 @@ namespace WanderlustService.Service.Entities.Regions
             throw new NotImplementedException();
         }
 
-        public Task DeleteAsync(long id)
+        public Task DeleteAsync(Guid id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<RegionComponent> FindAsync(long id)
+        public Task<RegionComponent> FindAsync(Guid id)
         {
             throw new NotImplementedException();
         }

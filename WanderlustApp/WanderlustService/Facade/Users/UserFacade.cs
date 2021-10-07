@@ -31,47 +31,44 @@ namespace WanderlustService.Facade.Users
 
         public async Task<bool> AuthentizeAsync(UserLoginDto userDto)
         {
-            using (IUnitOfWork unitOfWork = unitOfWorkContext.Create())
-            {
-                bool result = await userService.AuthenticateAsync(userDto.Username, userDto.Password);
-                await unitOfWork.CommitAsync();
-                return result;
-            }
+            IUnitOfWork unitOfWork = unitOfWorkContext.Create();
+            bool result = await userService.AuthenticateAsync(userDto.Username, userDto.Password);
+            await unitOfWork.CommitAsync();
+            return result;
         }
 
         public async Task ChangePasswordAsync(UserPasswordChangeDto userDto)
         {
-            using (IUnitOfWork unitOfWork = unitOfWorkContext.Create())
-            {
-                await userService.ChangePasswordAsync(userDto.Username, userDto.OldPassword, userDto.NewPassword);
-                await unitOfWork.CommitAsync();
-            }
+            IUnitOfWork unitOfWork = unitOfWorkContext.Create();
+            await userService.ChangePasswordAsync(userDto.Username, userDto.OldPassword, userDto.NewPassword);
+            await unitOfWork.CommitAsync();
         }
 
         public async Task<UserDto> FindByUsernameAsync(string username)
         {
-            using (IUnitOfWork unitOfWork = unitOfWorkContext.Create())
-            {
-                var user = await userService.FindByUsernameAsync(username);
-                var userDto = mapper.Map<UserDto>(user);
-                await unitOfWork.CommitAsync();
-                return userDto;
-            }
+            IUnitOfWork unitOfWork = unitOfWorkContext.Create();
+            var user = await userService.FindByUsernameAsync(username);
+            var userDto = mapper.Map<UserDto>(user);
+            await unitOfWork.CommitAsync();
+            return userDto;
         }
 
         public async Task RegisterAsync(UserRegisterDto userDto)
         {
             User user = mapper.Map<User>(userDto);
-            using (IUnitOfWork unitOfWork = unitOfWorkContext.Create())
-            {
-                await userService.RegisterAsync(user);
-                await unitOfWork.CommitAsync();
-            }
+
+            IUnitOfWork unitOfWork = unitOfWorkContext.Create();
+            await userService.RegisterAsync(user);
+            await unitOfWork.CommitAsync();
         }
 
-        public Task UpdateAsync(UserUpdateDto userDto)
+        public async Task UpdateAsync(UserUpdateDto userDto)
         {
-            throw new NotImplementedException();
+            User user = mapper.Map<User>(userDto);
+
+            IUnitOfWork unitOfWork = unitOfWorkContext.Create();
+            userService.Update(user);
+            await unitOfWork.CommitAsync();
         }
     }
 }

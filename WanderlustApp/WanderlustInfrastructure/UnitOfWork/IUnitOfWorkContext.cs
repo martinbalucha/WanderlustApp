@@ -5,7 +5,7 @@ namespace WanderlustInfrastructure.UnitOfWork
     /// <summary>
     /// An interface for the context responsible for creating unit of work
     /// </summary>
-    public interface IUnitOfWorkContext : IDisposable
+    public interface IUnitOfWorkContext
     {
         /// <summary>
         /// Creates new unit of work

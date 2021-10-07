@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
@@ -18,6 +20,7 @@ namespace WanderlustRest.Controllers
     /// </summary>
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class UserController : ControllerBase
     {
         /// <summary>
@@ -26,12 +29,19 @@ namespace WanderlustRest.Controllers
         private readonly IUserFacade userFacade;
 
         /// <summary>
+        /// A class used for accessing configuration information
+        /// </summary>
+        private readonly IConfiguration configuration;
+
+        /// <summary>
         /// Ctor
         /// </summary>
         /// <param name="userFacade">A facade for user operations</param>
-        public UserController(IUserFacade userFacade)
+        /// <param name="configuration">Configuration</param>
+        public UserController(IUserFacade userFacade, IConfiguration configuration)
         {
             this.userFacade = userFacade;
+            this.configuration = configuration;
         }
 
         /// <summary>
@@ -40,6 +50,7 @@ namespace WanderlustRest.Controllers
         /// <param name="userDto"></param>
         /// <returns>True if the login was successful. Otherwise false</returns>
         [HttpPost("Login")]
+        [AllowAnonymous]
         public async Task<IActionResult> Login(UserLoginDto userDto)
         {
             if (ModelState.IsValid)
@@ -58,11 +69,28 @@ namespace WanderlustRest.Controllers
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="userDto"></param>
+        /// <returns></returns>
+        [HttpPost("Update")]
+        public async Task<IActionResult> Update(UserUpdateDto userDto)
+        {
+            if (ModelState.IsValid)
+            {
+                await userFacade.UpdateAsync(userDto);
+                return Ok();
+            }
+            return BadRequest(ExtractErrorMessagesFromModelState());
+        }
+
+        /// <summary>
         /// Registers a new user
         /// </summary>
         /// <param name="userDto">User DTO containing information needed for a registration</param>
         /// <returns></returns>
         [HttpPost("Register")]
+        [AllowAnonymous]
         public async Task<IActionResult> Register(UserRegisterDto userDto)
         {
             if (ModelState.IsValid)
@@ -90,9 +118,10 @@ namespace WanderlustRest.Controllers
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
                 new Claim(JwtRegisteredClaimNames.Nbf, new DateTimeOffset(DateTime.Now).ToUnixTimeSeconds().ToString()),
                 new Claim(JwtRegisteredClaimNames.Exp, new DateTimeOffset(DateTime.Now.AddHours(4)).ToUnixTimeSeconds().ToString())
+                //new Claim(ClaimTypes.Role, user.)
             };
 
-            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("TOOD"));
+            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration.GetValue<string>("JWTSecretKey")));
             var signingCredentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
             var header = new JwtHeader(signingCredentials);
             var payload = new JwtPayload(claims);
