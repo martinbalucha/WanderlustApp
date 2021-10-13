@@ -142,3 +142,5 @@ e:\Projekty\WanderlustApp\WanderlustApp\WanderlustRest\obj\Debug\netcoreapp3.1\W
 e:\Projekty\WanderlustApp\WanderlustApp\WanderlustRest\obj\Debug\netcoreapp3.1\WanderlustRest.genruntimeconfig.cache
 e:\Projekty\WanderlustApp\WanderlustApp\WanderlustRest\bin\Debug\netcoreapp3.1\logs\log20210928.json
 e:\Projekty\WanderlustApp\WanderlustApp\WanderlustRest\bin\Debug\netcoreapp3.1\logs\log20210929.json
+E:\Projekty\WanderlustApp\WanderlustApp\WanderlustRest\bin\Debug\netcoreapp3.1\logs\log20211007.json
+E:\Projekty\WanderlustApp\WanderlustApp\WanderlustRest\bin\Debug\netcoreapp3.1\logs\log20211013.json

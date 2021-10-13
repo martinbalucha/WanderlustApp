@@ -36,7 +36,7 @@ namespace WanderlustInfrastructure.Query
         /// <param name="totalItemCount">The number of filtered items</param>
         /// <param name="pageSize">Size of one page</param>
         /// <param name="requestedPageNumber">Number of the requested page</param>
-        public QueryResult(IEnumerable<TEntity> items, long totalItemCount, int pageSize = 10, int? requestedPageNumber = null)
+        public QueryResult(IEnumerable<TEntity> items, long totalItemCount, int pageSize = 20, int? requestedPageNumber = null)
         {
             TotalItemCount = totalItemCount;
             RequestedPageNumber = requestedPageNumber;

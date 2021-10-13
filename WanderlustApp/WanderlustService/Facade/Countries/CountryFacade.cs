@@ -51,7 +51,7 @@ namespace WanderlustService.Facade.Countries
         {
             using (IUnitOfWork unitOfWork = unitOfWorkContext.Create())
             {
-                var visitedCountry = await countryService.FindAsync(countryDto.CountryId);
+                var visitedCountry = await countryService.FindAsync(countryDto.Id);
                 var visitingUser = await userService.FindByUsernameAsync(countryDto.Username);
 
                 visitedCountry.VisitedByUsers.Add(visitingUser);
