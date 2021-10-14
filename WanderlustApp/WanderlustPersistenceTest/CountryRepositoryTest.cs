@@ -1,15 +1,9 @@
 ﻿using Autofac;
-using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using WanderlustInfrastructure.Repository;
 using WanderlustInfrastructure.UnitOfWork;
 using WanderlustPersistence.Entity;
-using WanderlustPersistence.Infrastructure;
-using WanderlustPersistence.Infrastructure.UnitOfWork;
-using WanderlustPersistence.Repository;
 using Xunit;
 
 namespace WanderlustPersistenceTest
@@ -18,48 +12,10 @@ namespace WanderlustPersistenceTest
     /// Contains tests for repository
     /// </summary>
     public class CountryRepositoryTest : PersistenceTestBase
-    {       
-        private Guid SlovakiaGuid { get; set; } = Guid.NewGuid();
-
-        private Guid CzechRepublicGuid { get; set; } = Guid.NewGuid();
-
+    {      
         public CountryRepositoryTest() : base()
         {
-            Seed();
-        }
-
-        /// <summary>
-        /// Inserts initial data
-        /// </summary>
-        private void Seed()
-        {            
-            var context = Container.Resolve<DbContext>();
-
-            Country slovakia = new Country
-            {
-                Id = SlovakiaGuid,
-                Name = "Slovakia",
-                Code = "SK",
-                Description = "A small but beautiful country"
-            };
-
-            Country czechRepublic = new Country
-            {
-                Id = CzechRepublicGuid,
-                Name = "Czech Republic",
-                Code = "CZ",
-                Description = "A slightly larger, neighbouring and equally beautiful country"
-            };
-
-
-            context.Set<Country>().Add(slovakia);
-            context.Set<Country>().Add(czechRepublic);
-            context.SaveChanges();
-
-            foreach (var country in context.ChangeTracker.Entries())
-            {
-                country.State = EntityState.Detached;
-            }
+            SeedCountries();
         }
 
         [Fact]
@@ -135,6 +91,19 @@ namespace WanderlustPersistenceTest
             IRepository<Country> repository = Container.Resolve<IRepository<Country>>();
             IUnitOfWork unitOfWork = UnitOfWorkContext.Create();
             await repository.DeleteAsync(CzechRepublicGuid);
+            await unitOfWork.CommitAsync();
+        }
+
+        [Fact]
+        public async Task DeleteCountry_NonExisting()
+        {
+            IRepository<Country> repository = Container.Resolve<IRepository<Country>>();
+
+            Guid notStoredGuid = Guid.NewGuid();
+            IUnitOfWork unitOfWork = UnitOfWorkContext.Create();
+
+            Func<Task> action = async () => await repository.DeleteAsync(notStoredGuid);
+            await Assert.ThrowsAsync<ArgumentNullException>(action);
             await unitOfWork.CommitAsync();
         }
     }
