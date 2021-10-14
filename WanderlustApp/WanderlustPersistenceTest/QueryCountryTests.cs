@@ -12,9 +12,9 @@ using Xunit;
 
 namespace WanderlustPersistenceTest
 {
-    public class QueryCountryTest : PersistenceTestBase
+    public class QueryCountryTests : PersistenceTestBase
     {
-        public QueryCountryTest() : base()
+        public QueryCountryTests() : base()
         {
             SeedCountries();
         }
