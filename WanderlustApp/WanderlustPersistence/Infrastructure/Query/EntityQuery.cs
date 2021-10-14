@@ -76,11 +76,6 @@ namespace WanderlustPersistence.Infrastructure.Query
             return new QueryResult<TEntity>(items, itemsCount, PageSize, PageNumber);
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="queryable"></param>
-        /// <returns></returns>
         private IQueryable<TEntity> UseSortCriteria(IQueryable<TEntity> queryable)
         {
             var selectedProeprty = typeof(TEntity).GetProperty(SortingProperty);
@@ -92,13 +87,6 @@ namespace WanderlustPersistence.Infrastructure.Query
                 .Invoke(this, new object[] { expr, queryable });
         }
 
-        /// <summary>
-        /// Applies sorting criteria
-        /// </summary>
-        /// <typeparam name="TKey">Key</typeparam>
-        /// <param name="sortExpression">Sorting expression</param>
-        /// <param name="queryable">A queryable collection</param>
-        /// <returns>Sorted queryable collection</returns>
         private IQueryable<TEntity> UseSortCriteriaCore<TKey>(Expression<Func<TEntity, TKey>> sortExpression, IQueryable<TEntity> queryable)
         {
             return SortAscendingly ? queryable.OrderBy(sortExpression) : queryable.OrderByDescending(sortExpression);
@@ -112,11 +100,6 @@ namespace WanderlustPersistence.Infrastructure.Query
             return queryable.Where(lambdaExpression);
         }
 
-        /// <summary>
-        /// Conbines binary expressions
-        /// </summary>
-        /// <param name="compositePredicate">A single composite predicate</param>
-        /// <returns>Predicate transformed into an expression</returns>
         private Expression CombineBinaryExpressions(CompositePredicate compositePredicate)
         {
             if (compositePredicate.Predicates.Count == 0)
@@ -144,11 +127,6 @@ namespace WanderlustPersistence.Infrastructure.Query
             return expression;
         }
 
-        /// <summary>
-        /// Builds new binary expression from the predicate
-        /// </summary>
-        /// <param name="predicate">A predicate containing selection condition</param>
-        /// <returns>A binary expression derived from the predicate</returns>
         private Expression BuildBinaryExpression(IPredicate predicate)
         {
             ElementaryPredicate elementaryPredicate = predicate as ElementaryPredicate;

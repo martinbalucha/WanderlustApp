@@ -1,15 +1,9 @@
 ﻿using Autofac;
-using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using WanderlustInfrastructure.Repository;
 using WanderlustInfrastructure.UnitOfWork;
 using WanderlustPersistence.Entity;
-using WanderlustPersistence.Infrastructure;
-using WanderlustPersistence.Infrastructure.UnitOfWork;
-using WanderlustPersistence.Repository;
 using Xunit;
 
 namespace WanderlustPersistenceTest
@@ -17,72 +11,11 @@ namespace WanderlustPersistenceTest
     /// <summary>
     /// Contains tests for repository
     /// </summary>
-    public class CountryRepositoryTest
-    {
-        /// <summary>
-        /// Context of in memory database
-        /// </summary>
-        private WanderlustContext InMemoryContext { get; set; }
-
-        /// <summary>
-        /// Dependency injection container
-        /// </summary>
-        private IContainer Container { get; set; }
-
-        /// <summary>
-        /// Unit of work context
-        /// </summary>
-        private IUnitOfWorkContext UnitOfWorkContext { get; set; }
-
-        private Guid SlovakiaGuid { get; set; }
-
-        private Guid CzechRepublicGuid { get; set; }
-
-        public CountryRepositoryTest()
+    public class CountryRepositoryTest : PersistenceTestBase
+    {      
+        public CountryRepositoryTest() : base()
         {
-            var inMemoryOptions = new DbContextOptionsBuilder<WanderlustContext>().UseInMemoryDatabase(databaseName: "Test").Options;
-            InMemoryContext = new WanderlustContext(inMemoryOptions);
-            SetupContainer();
-            UnitOfWorkContext = Container.Resolve<IUnitOfWorkContext>();
-        }
-
-        /// <summary>
-        /// Inserts initial data
-        /// </summary>
-        private async Task Seed()
-        {            
-            IRepository<Country> repository = Container.Resolve<IRepository<Country>>();
-
-            Country slovakia = new Country
-            {
-                Name = "Slovakia",
-                Code = "SK",
-                Description = "A small but beautiful country"
-            };
-
-            Country czechRepublic = new Country
-            {
-                Name = "Czech Republic",
-                Code = "CZ",
-                Description = "A slightly larger, neighbouring and equally beautiful country"
-            };
-
-            IUnitOfWork unitOfWork = UnitOfWorkContext.Create();
-            SlovakiaGuid = await repository.CreateAsync(slovakia);
-            CzechRepublicGuid = await repository.CreateAsync(czechRepublic);
-            await unitOfWork.CommitAsync();
-        }
-
-        /// <summary>
-        /// Sets up autofac container
-        /// </summary>
-        private void SetupContainer()
-        {
-            var builder = new ContainerBuilder();
-            builder.RegisterInstance(InMemoryContext).As(typeof(DbContext));
-            builder.RegisterType(typeof(EntityFrameworkUnitOfWorkContext)).As(typeof(IUnitOfWorkContext)).SingleInstance();
-            builder.RegisterGeneric(typeof(EntityFrameworkRepository<>)).As(typeof(IRepository<>));
-            Container = builder.Build();
+            SeedCountries();
         }
 
         [Fact]
@@ -91,21 +24,20 @@ namespace WanderlustPersistenceTest
             IRepository<Country> repository = Container.Resolve<IRepository<Country>>();
             Country country = new Country
             {
-                Name = "Slovakia",
-                Code = "SK",
-                Description = "A small but beautiful country"
+                Name = "Austria",
+                Code = "AT",
+                Description = "Once a mighty empire"
             };
 
             IUnitOfWork unitOfWork = UnitOfWorkContext.Create();
             await repository.CreateAsync(country);
             await unitOfWork.CommitAsync();
+            Assert.True(country.Id != null);
         }
 
         [Fact]
         public async Task FindCountry_Existing()
         {
-            await Seed();
-
             Country country = new Country
             {
                 Id = SlovakiaGuid,
@@ -122,5 +54,57 @@ namespace WanderlustPersistenceTest
             Assert.Equal(country.Id, retrievedCountry.Id);
         }
 
+        [Fact]
+        public async Task FindCountry_NotExisting()
+        {
+            Guid guidOfNonExistingCountry = Guid.NewGuid();
+
+            IRepository<Country> repository = Container.Resolve<IRepository<Country>>();
+
+            IUnitOfWork unitOfWork = UnitOfWorkContext.Create();
+            Country retrievedCountry = await repository.FindAsync(guidOfNonExistingCountry);
+            await unitOfWork.CommitAsync();
+            Assert.Null(retrievedCountry);
+        }
+
+        [Fact]
+        public async Task UpdateCountry_Existing()
+        {
+            Country country = new Country
+            {
+                Id = CzechRepublicGuid,
+                Name = "Czech Republic",
+                Code = "CZ",
+                Description = "A different description this time"
+            };
+
+            IRepository<Country> repository = Container.Resolve<IRepository<Country>>();
+
+            IUnitOfWork unitOfWork = UnitOfWorkContext.Create();
+            repository.Update(country);
+            await unitOfWork.CommitAsync();
+        }
+
+        [Fact]
+        public async Task DeleteCountry_Existing()
+        {
+            IRepository<Country> repository = Container.Resolve<IRepository<Country>>();
+            IUnitOfWork unitOfWork = UnitOfWorkContext.Create();
+            await repository.DeleteAsync(CzechRepublicGuid);
+            await unitOfWork.CommitAsync();
+        }
+
+        [Fact]
+        public async Task DeleteCountry_NonExisting()
+        {
+            IRepository<Country> repository = Container.Resolve<IRepository<Country>>();
+
+            Guid notStoredGuid = Guid.NewGuid();
+            IUnitOfWork unitOfWork = UnitOfWorkContext.Create();
+
+            Func<Task> action = async () => await repository.DeleteAsync(notStoredGuid);
+            await Assert.ThrowsAsync<ArgumentNullException>(action);
+            await unitOfWork.CommitAsync();
+        }
     }
 }
