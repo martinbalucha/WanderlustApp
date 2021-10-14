@@ -14,7 +14,7 @@ namespace WanderlustPersistence.Entity
         /// <summary>
         /// The name of the region
         /// </summary>
-        [Required]
+        [Required, MaxLength(80)]
         public string Name;
 
         /// <summary>
@@ -30,6 +30,7 @@ namespace WanderlustPersistence.Entity
         /// <summary>
         /// Description of the region
         /// </summary>
+        [MaxLength(2000)]
         public string Description { get; set; }
 
         /// <summary>

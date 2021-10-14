@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using WanderlustPersistence.Infrastructure;
@@ -9,9 +10,10 @@ using WanderlustPersistence.Infrastructure;
 namespace WanderlustPersistence.Migrations
 {
     [DbContext(typeof(WanderlustContext))]
-    partial class WanderlustContextModelSnapshot : ModelSnapshot
+    [Migration("20211014144010_AddBirthDate")]
+    partial class AddBirthDate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

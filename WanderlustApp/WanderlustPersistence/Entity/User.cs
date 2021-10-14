@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using WanderlustInfrastructure.Entity;
 using WanderlustPersistence.Enums;
@@ -38,6 +39,11 @@ namespace WanderlustPersistence.Entity
         /// User's role in the system
         /// </summary>
         public Role Role { get; set; }
+
+        /// <summary>
+        /// User's date of birth
+        /// </summary>
+        public DateTime? DateOfBirth { get; set; }
 
         /// <summary>
         /// A set of countries the user has visited

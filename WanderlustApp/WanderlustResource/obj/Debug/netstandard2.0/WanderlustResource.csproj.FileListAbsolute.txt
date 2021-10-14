@@ -25,3 +25,4 @@ e:\Projekty\WanderlustApp\WanderlustApp\WanderlustResource\obj\Debug\netstandard
 e:\Projekty\WanderlustApp\WanderlustApp\WanderlustResource\obj\Debug\netstandard2.0\WanderlustResource.csproj.CoreCompileInputs.cache
 e:\Projekty\WanderlustApp\WanderlustApp\WanderlustResource\obj\Debug\netstandard2.0\WanderlustResource.dll
 e:\Projekty\WanderlustApp\WanderlustApp\WanderlustResource\obj\Debug\netstandard2.0\WanderlustResource.pdb
+E:\Projekty\WanderlustApp\WanderlustApp\WanderlustResource\obj\Debug\netstandard2.0\WanderlustResource.csproj.AssemblyReference.cache
