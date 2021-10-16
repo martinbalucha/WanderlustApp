@@ -64,7 +64,7 @@ namespace WanderlustPersistenceTest
                 Id = SlovakiaGuid,
                 Name = "Slovakia",
                 Code = "SK",
-                Description = "A small but beautiful country"
+                Description = "A small but beautiful country",                
             };
 
             Country czechRepublic = new Country
@@ -72,8 +72,8 @@ namespace WanderlustPersistenceTest
                 Id = CzechRepublicGuid,
                 Name = "Czech Republic",
                 Code = "CZ",
-                Description = "A small but beautiful country"
-            };
+                Description = "A small but beautiful country",
+        };
 
             return new List<Country> { slovakia, czechRepublic };
         }

@@ -14,7 +14,7 @@ namespace WanderlustInfrastructure.Query.Predicates.Operators
         LessThan,
         LessThanOrEqual,
         StringContains,
-        CollectionContains,
-        CollectionDoesNotContain
+        In,
+        NotIn
     }
 }
