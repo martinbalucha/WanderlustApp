@@ -57,11 +57,10 @@ namespace WanderlustInfrastructure.Query.Predicates
         public static Expression GetExpression(this ElementaryPredicate elementaryPredicate, ParameterExpression parameterExpression)
         {
             var memberExpression = Expression.PropertyOrField(parameterExpression, elementaryPredicate.TargetProperty);
-            // Ensure compared value has the same type as the accessed member
             var memberType = GetMemberType(elementaryPredicate, memberExpression);
-            bool isCollection = ImplementsEnumberable(memberType);
+            bool isEnumberable = ImplementsEnumberable(memberType);
 
-            var constantExpression = isCollection ? Expression.Constant(elementaryPredicate.ComparedValue) :
+            var constantExpression = isEnumberable ? Expression.Constant(elementaryPredicate.ComparedValue) :
                                                     Expression.Constant(elementaryPredicate.ComparedValue, memberType);
 
             return TransformToExpression(elementaryPredicate.ValueComparingOperator, memberExpression, constantExpression);
