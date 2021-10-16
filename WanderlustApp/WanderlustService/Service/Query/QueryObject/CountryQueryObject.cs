@@ -55,7 +55,7 @@ namespace WanderlustService.Service.Query.QueryObject
         {
             if (filter.UserId.HasValue && filter.Visited.HasValue)
             {
-                var valueComparer = filter.Visited.Value ? ValueComparingOperator.CollectionContains : ValueComparingOperator.CollectionDoesNotContain;
+                var valueComparer = filter.Visited.Value ? ValueComparingOperator.In : ValueComparingOperator.NotIn;
                 return new ElementaryPredicate(nameof(Country.VisitedByUsers), valueComparer, filter.UserId.Value);
             }
             return null;

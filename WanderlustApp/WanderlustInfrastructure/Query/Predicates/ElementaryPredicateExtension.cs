@@ -4,6 +4,9 @@ using System.Linq.Expressions;
 using WanderlustResource.Backend;
 using WanderlustInfrastructure.Query.Predicates.Operators;
 using WanderlustInfrastructure.Entity;
+using System.Collections;
+using System.Linq;
+using System.Reflection;
 
 namespace WanderlustInfrastructure.Query.Predicates
 {
@@ -26,13 +29,23 @@ namespace WanderlustInfrastructure.Query.Predicates
             {ValueComparingOperator.LessThan, Expression.LessThan },
             {ValueComparingOperator.LessThanOrEqual, Expression.LessThanOrEqual },
             {ValueComparingOperator.StringContains, (memberExpression, constantExpression) =>
-                Expression.Call(memberExpression, typeof(string).GetMethod("Contains", new[] { typeof(string) }), constantExpression)},
-            {ValueComparingOperator.CollectionContains, (memberExpression, contantExpression) => 
-                Expression.Call(memberExpression, typeof(ICollection<>).GetMethod("Contains", new[]{ typeof(EntityBase) }), contantExpression)},
+                Expression.Call(memberExpression, typeof(string)
+                          .GetMethod("Contains", new[] { typeof(string) }), constantExpression)},
+
+            {ValueComparingOperator.In, (memberExpression, constantExpression) => 
+                                            Expression.Call(typeof(Enumerable).GetMethods(BindingFlags.Static | BindingFlags.Public)
+                                                                              .Single(m => m.Name == nameof(Enumerable.Contains)
+                                                                               && m.GetParameters().Length == 2)
+                                                                              .MakeGenericMethod(constantExpression.Type),
+                                         memberExpression, constantExpression)},
             
-            //TODO: how to handle negative oposite?
-            {ValueComparingOperator.CollectionDoesNotContain, (memberExpression, contantExpression) =>
-                Expression.Not(Expression.Call(memberExpression, typeof(ICollection<>).GetMethod("Contains", new[]{ typeof(EntityBase) }), contantExpression))} 
+            {ValueComparingOperator.NotIn, (memberExpression, constantExpression) =>
+                                            Expression.Not(Expression.Call(typeof(Enumerable).GetMethods(BindingFlags.Static | 
+                                                                                                         BindingFlags.Public)
+                                                                              .Single(m => m.Name == nameof(Enumerable.Contains)
+                                                                               && m.GetParameters().Length == 2)
+                                                                              .MakeGenericMethod(constantExpression.Type),
+                                            memberExpression, constantExpression))}
         };
 
         /// <summary>
@@ -46,7 +59,11 @@ namespace WanderlustInfrastructure.Query.Predicates
             var memberExpression = Expression.PropertyOrField(parameterExpression, elementaryPredicate.TargetProperty);
             // Ensure compared value has the same type as the accessed member
             var memberType = GetMemberType(elementaryPredicate, memberExpression);
-            var constantExpression = Expression.Constant(elementaryPredicate.ComparedValue, memberType);
+            bool isCollection = ImplementsEnumberable(memberType);
+
+            var constantExpression = isCollection ? Expression.Constant(elementaryPredicate.ComparedValue) :
+                                                    Expression.Constant(elementaryPredicate.ComparedValue, memberType);
+
             return TransformToExpression(elementaryPredicate.ValueComparingOperator, memberExpression, constantExpression);
         }
 
@@ -59,6 +76,11 @@ namespace WanderlustInfrastructure.Query.Predicates
         private static Type GetMemberType(ElementaryPredicate elementaryPredicate, MemberExpression memberExpression)
         {
             return memberExpression.Member.DeclaringType?.GetProperty(elementaryPredicate.TargetProperty)?.PropertyType;
+        }
+
+        public static bool ImplementsEnumberable(Type propertyType)
+        {
+            return propertyType.GetInterfaces().Contains(typeof(IEnumerable)) && !propertyType.Equals(typeof(string));
         }
 
         /// <summary>
@@ -74,7 +96,8 @@ namespace WanderlustInfrastructure.Query.Predicates
             {
                 throw new InvalidOperationException(string.Format(Exceptions.WLE007, comparingOperator));
             }
-            return Expressions[comparingOperator].Invoke(memberExpression, constantExpression);
+            var callback = Expressions[comparingOperator];
+            return callback.Invoke(memberExpression, constantExpression);
         }
     }
 }

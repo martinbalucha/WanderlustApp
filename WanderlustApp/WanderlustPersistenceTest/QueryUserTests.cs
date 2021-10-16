@@ -40,7 +40,7 @@ namespace WanderlustPersistenceTest
             var actualResult = await query.Where(predicate).ExecuteAsync();
             await unitOfWork.CommitAsync();
 
-            actualResult.Should().BeEquivalentTo(expectedResult);
+            actualResult.Should().BeEquivalentTo(expectedResult, options => options.IgnoringCyclicReferences());
         }
 
         [Fact]
@@ -58,7 +58,7 @@ namespace WanderlustPersistenceTest
             var actualResult = await query.Where(predicate).ExecuteAsync();
             await unitOfWork.CommitAsync();
 
-            actualResult.Should().BeEquivalentTo(expectedResult);
+            actualResult.Should().BeEquivalentTo(expectedResult, options => options.IgnoringCyclicReferences());
         }
 
         [Fact]
@@ -76,7 +76,7 @@ namespace WanderlustPersistenceTest
             var actualResult = await query.Where(predicate).ExecuteAsync();
             await unitOfWork.CommitAsync();
 
-            actualResult.Should().BeEquivalentTo(expectedResult);
+            actualResult.Should().BeEquivalentTo(expectedResult, options => options.IgnoringCyclicReferences());
         }
 
         [Fact]
@@ -94,7 +94,7 @@ namespace WanderlustPersistenceTest
             var actualResult = await query.Where(predicate).ExecuteAsync();
             await unitOfWork.CommitAsync();
 
-            actualResult.Should().BeEquivalentTo(expectedResult);
+            actualResult.Should().BeEquivalentTo(expectedResult, options => options.IgnoringCyclicReferences());
         }
 
         [Fact]
@@ -112,7 +112,43 @@ namespace WanderlustPersistenceTest
             var actualResult = await query.Where(predicate).ExecuteAsync();
             await unitOfWork.CommitAsync();
 
-            actualResult.Should().BeEquivalentTo(expectedResult);
+            actualResult.Should().BeEquivalentTo(expectedResult, options => options.IgnoringCyclicReferences());
+        }
+
+        [Fact]
+        public async void FilterUsingElemenetaryInPredicate_Existing()
+        {
+            var query = Container.Resolve<IQuery<User>>();
+            Country visitedCountry = InitializeCountries().Where(c => c.Id.Equals(CzechRepublicGuid)).FirstOrDefault();
+            var usersWhoVisitedTheCountry = InitializeUsers().Where(u => u.CountriesVisited.Any(c => c.Id.Equals(CzechRepublicGuid)))
+                                                             .ToList();
+
+            var expectedResult = new QueryResult<User>(usersWhoVisitedTheCountry, usersWhoVisitedTheCountry.Count);
+            var predicate = new ElementaryPredicate(nameof(User.CountriesVisited), ValueComparingOperator.In, visitedCountry);
+
+            IUnitOfWork unitOfWork = UnitOfWorkContext.Create();
+            var actualResult = await query.Where(predicate).ExecuteAsync();
+            await unitOfWork.CommitAsync();
+
+            actualResult.Should().BeEquivalentTo(expectedResult, options => options.IgnoringCyclicReferences());
+        }
+
+        [Fact]
+        public async void FilterUsingElemenetaryNotInPredicate_Existing()
+        {
+            var query = Container.Resolve<IQuery<User>>();
+            Country notVisitedCountry = InitializeCountries().Where(c => c.Id.Equals(CzechRepublicGuid)).FirstOrDefault();
+            var usersWhoDidNotVisitTheCountry = InitializeUsers().Where(u => !u.CountriesVisited.Any(c => c.Id.Equals(CzechRepublicGuid)))
+                                                                 .ToList();
+
+            var expectedResult = new QueryResult<User>(usersWhoDidNotVisitTheCountry, usersWhoDidNotVisitTheCountry.Count);
+            var predicate = new ElementaryPredicate(nameof(User.CountriesVisited), ValueComparingOperator.NotIn, notVisitedCountry);
+
+            IUnitOfWork unitOfWork = UnitOfWorkContext.Create();
+            var actualResult = await query.Where(predicate).ExecuteAsync();
+            await unitOfWork.CommitAsync();
+
+            actualResult.Should().BeEquivalentTo(expectedResult, options => options.IgnoringCyclicReferences());
         }
 
         private void SeedUsers()
@@ -122,15 +158,19 @@ namespace WanderlustPersistenceTest
             context.Set<User>().AddRange(users);
 
             context.SaveChanges();
-
-            foreach (var user in context.ChangeTracker.Entries())
-            {
-                user.State = EntityState.Detached;
-            }
         }
 
         private IList<User> InitializeUsers()
         {
+            var countries = InitializeCountries();
+            
+            foreach (Country country in countries)
+            {
+                country.VisitedByUsers = new HashSet<User>();
+            }
+
+            var slovakia = countries.Where(c => c.Id.Equals(SlovakiaGuid)).FirstOrDefault();
+            
             var admin = new User
             {
                 Id = AdminGuid,
@@ -140,7 +180,13 @@ namespace WanderlustPersistenceTest
                 Salt = "L3CdLhdf2ya9aBzqQOc6sg==",
                 Password = "452BCkh9nkdsU708cP0JBXTsTJw=",
                 Role = Role.Admin,
+                CountriesVisited = countries.ToHashSet()
             };
+
+            foreach (Country country in admin.CountriesVisited)
+            {
+                country.VisitedByUsers.Add(admin);
+            }
 
             var regularUser = new User
             {
@@ -151,8 +197,10 @@ namespace WanderlustPersistenceTest
                 Salt = "L3CdLhdf2ya9aBzqQOc6sg==",
                 Password = "452BCkh9nkdsU708cP0JBXTsTJw=",
                 Role = Role.Regular,
+                CountriesVisited = new HashSet<Country> { slovakia }
             };
 
+            regularUser.CountriesVisited.First().VisitedByUsers.Add(regularUser);
             return new List<User> { admin, regularUser };
         }
     }
