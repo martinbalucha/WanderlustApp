@@ -2,7 +2,6 @@
 using AutoMapper;
 using System.Reflection;
 using WanderlustInfrastructure.Query;
-using WanderlustInfrastructure.Repository;
 using WanderlustPersistence;
 using WanderlustPersistence.Entity;
 using WanderlustService.DataTransferObject.Filter;
@@ -30,12 +29,8 @@ namespace WanderlustService.Config
                 .AsImplementedInterfaces()
                 .InstancePerDependency();
 
-            //builder.RegisterAssemblyOpenGenericTypes(Assembly.GetExecutingAssembly())
-            //    .Where(a => a.IsSubclassOf(typeof(QueryObjectBase<,,>)))
-            //    .As(typeof(QueryObjectBase<,,>))
-            //    .InstancePerDependency();
-
             builder.RegisterType<UserQueryObject>().As<QueryObjectBase<User, UserFilterDto, IQuery<User>>>().InstancePerDependency();
+            builder.RegisterType<CountryQueryObject>().As<QueryObjectBase<Country, CountryFilterDto, IQuery<Country>>>().InstancePerDependency();
 
             builder.RegisterInstance(new Mapper(new MapperConfiguration(MappingConfig.ConfigureMapping)))
                 .As<IMapper>()

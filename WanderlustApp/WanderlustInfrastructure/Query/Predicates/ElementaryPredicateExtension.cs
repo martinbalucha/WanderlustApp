@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using WanderlustResource.Backend;
 using WanderlustInfrastructure.Query.Predicates.Operators;
-using WanderlustInfrastructure.Entity;
 using System.Collections;
 using System.Linq;
 using System.Reflection;
@@ -13,6 +12,7 @@ namespace WanderlustInfrastructure.Query.Predicates
     /// <summary>
     /// An extension class for <see cref="ElementaryPredicate"/>
     /// Copied from: TODO
+    /// In, NotIn operators were added and also handling of nested properties was implemented
     /// </summary>
     public static class ElementaryPredicateExtension
     {
@@ -56,7 +56,8 @@ namespace WanderlustInfrastructure.Query.Predicates
         /// <returns>An expresion</returns>
         public static Expression GetExpression(this ElementaryPredicate elementaryPredicate, ParameterExpression parameterExpression)
         {
-            var memberExpression = Expression.PropertyOrField(parameterExpression, elementaryPredicate.TargetProperty);
+            var memberExpression = ExtractMemberExpression(parameterExpression, elementaryPredicate.TargetProperty); 
+            //Expression.PropertyOrField(parameterExpression, elementaryPredicate.TargetProperty);
             var memberType = GetMemberType(elementaryPredicate, memberExpression);
             bool isEnumberable = ImplementsEnumberable(memberType);
 
@@ -64,6 +65,26 @@ namespace WanderlustInfrastructure.Query.Predicates
                                                     Expression.Constant(elementaryPredicate.ComparedValue, memberType);
 
             return TransformToExpression(elementaryPredicate.ValueComparingOperator, memberExpression, constantExpression);
+        }
+
+        /// <summary>
+        /// Extracts member expression from the parameter
+        /// Inspired by: https://stackoverflow.com/a/16208620
+        /// </summary>
+        /// <param name="parameterExpression"></param>
+        /// <param name="propertyName"></param>
+        /// <returns></returns>
+        private static MemberExpression ExtractMemberExpression(ParameterExpression parameterExpression, string propertyName)
+        {
+            char delimiter = '.';
+            Expression expression = parameterExpression;
+            string[] propertyNamesChain = propertyName.Split(delimiter);
+
+            foreach (var member in propertyNamesChain)
+            {
+                expression = Expression.PropertyOrField(parameterExpression, member);
+            }
+            return expression as MemberExpression;
         }
 
         /// <summary>

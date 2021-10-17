@@ -2,6 +2,7 @@
 using System;
 using System.Threading.Tasks;
 using WanderlustInfrastructure.Entity;
+using WanderlustInfrastructure.Query;
 using WanderlustInfrastructure.Repository;
 
 namespace WanderlustService.Service.Common
@@ -37,7 +38,7 @@ namespace WanderlustService.Service.Common
         /// </summary>
         /// <param name="sight">A new entity that will be created</param>
         /// <returns>Task</returns>
-        public async Task CreateAsync(TEntity entity)
+        public virtual async Task CreateAsync(TEntity entity)
         {
             await repository.CreateAsync(entity);
         }
@@ -46,7 +47,7 @@ namespace WanderlustService.Service.Common
         /// Updates an entity
         /// </summary>
         /// <param name="entity">An entity that will be updated</param>
-        public void Update(TEntity entity)
+        public virtual void Update(TEntity entity)
         {
             repository.Update(entity);
         }
@@ -56,7 +57,7 @@ namespace WanderlustService.Service.Common
         /// </summary>
         /// <param name="id">ID of the wanted entity</param>
         /// <returns>An entity with the given ID. Null, if no such entity exists</returns>
-        public async Task<TEntity> FindAsync(Guid id)
+        public virtual async Task<TEntity> FindAsync(Guid id)
         {
             return await repository.FindAsync(id);
         }
@@ -66,7 +67,7 @@ namespace WanderlustService.Service.Common
         /// </summary>
         /// <param name="id">ID of an entity that is to be deleted</param>
         /// <returns>Task</returns>
-        public async Task DeleteAsync(Guid id)
+        public virtual async Task DeleteAsync(Guid id)
         {
             await repository.DeleteAsync(id);
         }
