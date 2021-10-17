@@ -8,11 +8,6 @@ namespace WanderlustPersistence.Infrastructure
     /// </summary>
     public class WanderlustContext : DbContext
     {
-        public WanderlustContext() : base()
-        {
-
-        }
-
         /// <summary>
         /// Ctor
         /// </summary>
@@ -49,13 +44,6 @@ namespace WanderlustPersistence.Infrastructure
         /// <summary>
         /// Database set for regions
         /// </summary>
-        public DbSet<RegionComponent> Regions { get; set; }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Region>();
-            modelBuilder.Entity<Subregion>();
-            base.OnModelCreating(modelBuilder);
-        }
+        public DbSet<Region> Regions { get; set; }
     }
 }

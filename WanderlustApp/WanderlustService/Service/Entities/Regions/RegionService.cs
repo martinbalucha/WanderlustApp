@@ -17,10 +17,10 @@ namespace WanderlustService.Service.Entities.Regions
         /// <summary>
         /// A query object used for filtering users
         /// </summary>
-        private readonly QueryObjectBase<RegionComponent, RegionComponentFilterDto, IQuery<RegionComponent>> queryObject;
+        private readonly QueryObjectBase<Region, RegionComponentFilterDto, IQuery<Region>> queryObject;
 
 
-        public Task CreateAsync(RegionComponent entity)
+        public Task CreateAsync(Region entity)
         {
             throw new NotImplementedException();
         }
@@ -30,12 +30,12 @@ namespace WanderlustService.Service.Entities.Regions
             throw new NotImplementedException();
         }
 
-        public Task<RegionComponent> FindAsync(Guid id)
+        public Task<Region> FindAsync(Guid id)
         {
             throw new NotImplementedException();
         }
 
-        public void Update(RegionComponent entity)
+        public void Update(Region entity)
         {
             throw new NotImplementedException();
         }

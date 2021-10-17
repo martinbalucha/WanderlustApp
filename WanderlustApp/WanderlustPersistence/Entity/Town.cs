@@ -10,12 +10,6 @@ namespace WanderlustPersistence.Entity
     public class Town : EntityBase
     {
         /// <summary>
-        /// A region which the town belongs to
-        /// </summary>
-        [Required]
-        public RegionComponent Region { get; set; }
-
-        /// <summary>
         /// The name of the town
         /// </summary>
         [Required]
@@ -28,9 +22,15 @@ namespace WanderlustPersistence.Entity
         public string Description { get; set; }
 
         /// <summary>
+        /// A region which the town belongs to
+        /// </summary>
+        [Required]
+        public Region Region { get; set; }
+
+        /// <summary>
         /// A collection of sights located in the town
         /// </summary>
-        public IEnumerable<Sight> Sights { get; set; }
+        public ISet<Sight> Sights { get; set; }
 
         /// <summary>
         /// A set of users who visited the town

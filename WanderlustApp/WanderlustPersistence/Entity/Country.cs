@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using WanderlustInfrastructure.Entity;
 
@@ -13,13 +12,13 @@ namespace WanderlustPersistence.Entity
         /// <summary>
         /// A full name of the country
         /// </summary>
-        [Required, MaxLength(100)]
+        [Required(AllowEmptyStrings = false), MaxLength(100)]
         public string Name { get; set; }
 
         /// <summary>
         /// A code of the country
         /// </summary>
-        [Required, MaxLength(10)]
+        [Required(AllowEmptyStrings = false), MaxLength(10)]
         public string Code { get; set; }
 
         /// <summary>
@@ -31,7 +30,7 @@ namespace WanderlustPersistence.Entity
         /// <summary>
         /// A set of regions
         /// </summary>
-        public ISet<RegionComponent> Regions { get; set; }
+        public ISet<Region> Regions { get; set; }
 
         /// <summary>
         /// A set of foods typical for the country
