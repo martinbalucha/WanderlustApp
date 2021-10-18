@@ -36,7 +36,7 @@ namespace WanderlustPersistence.Infrastructure.Query
         /// </summary>
         private DbContext Context
         {
-            get { return ((EntityFrameworkUnitOfWork)unitOfWorkContext.GetUnitOfWork()).Context; }
+            get { return ((EntityFrameworkUnitOfWork) unitOfWorkContext.GetUnitOfWork()).Context; }
         }
 
         /// <summary>
@@ -81,6 +81,7 @@ namespace WanderlustPersistence.Infrastructure.Query
             var selectedProeprty = typeof(TEntity).GetProperty(SortingProperty);
             var param = Expression.Parameter(typeof(TEntity), "i");
             var expr = Expression.Lambda(Expression.Property(param, selectedProeprty), param);
+
             return (IQueryable<TEntity>)typeof(EntityQuery<TEntity>)
                 .GetMethod(nameof(UseSortCriteriaCore), BindingFlags.Instance | BindingFlags.NonPublic)
                 .MakeGenericMethod(selectedProeprty.PropertyType)
@@ -94,47 +95,10 @@ namespace WanderlustPersistence.Infrastructure.Query
 
         private IQueryable<TEntity> UseFilterCriteria(IQueryable<TEntity> queryable)
         {
-            var bodyExpression = Predicate is CompositePredicate composite ? CombineBinaryExpressions(composite) : BuildBinaryExpression(Predicate as ElementaryPredicate);
+            var bodyExpression = Predicate.BuildExpression(parameterExpression);
             var lambdaExpression = Expression.Lambda<Func<TEntity, bool>>(bodyExpression, parameterExpression);
             Debug.WriteLine(lambdaExpression.ToString());
             return queryable.Where(lambdaExpression);
-        }
-
-        private Expression CombineBinaryExpressions(CompositePredicate compositePredicate)
-        {
-            if (compositePredicate.Predicates.Count == 0)
-            {
-                throw new InvalidOperationException(Exceptions.WLE004);
-            }
-            var expression = compositePredicate.Predicates.First() is CompositePredicate composite
-                ? CombineBinaryExpressions(composite)
-                : BuildBinaryExpression(compositePredicate.Predicates.First());
-            for (var i = 1; i < compositePredicate.Predicates.Count; i++)
-            {
-                if (compositePredicate.Predicates[i] is CompositePredicate predicate)
-                {
-                    expression = compositePredicate.LogicalOperator == LogicalOperator.OR ?
-                        Expression.OrElse(expression, CombineBinaryExpressions(predicate)) :
-                        Expression.AndAlso(expression, CombineBinaryExpressions(predicate));
-                }
-                else
-                {
-                    expression = compositePredicate.LogicalOperator== LogicalOperator.OR ?
-                        Expression.OrElse(expression, BuildBinaryExpression(compositePredicate.Predicates[i])) :
-                        Expression.AndAlso(expression, BuildBinaryExpression(compositePredicate.Predicates[i]));
-                }
-            }
-            return expression;
-        }
-
-        private Expression BuildBinaryExpression(IPredicate predicate)
-        {
-            ElementaryPredicate elementaryPredicate = predicate as ElementaryPredicate;
-            if (elementaryPredicate == null)
-            {
-                throw new ArgumentException(Exceptions.WLE005);
-            }
-            return elementaryPredicate.GetExpression(parameterExpression);
         }
     }
 }
