@@ -9,7 +9,7 @@ namespace WanderlustService.Service.Entities.Regions
     /// <summary>
     /// An interface for region components
     /// </summary>
-    public interface IRegionService : IEntityService<RegionComponent>
+    public interface IRegionService : IEntityService<Region>
     {
     }
 }

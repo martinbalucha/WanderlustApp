@@ -53,10 +53,10 @@ namespace WanderlustService.Service.Query.QueryObject
         /// <returns>A filled predicate</returns>
         private IPredicate FilterByVisit(CountryFilterDto filter)
         {
-            if (filter.UserId.HasValue && filter.Visited.HasValue)
+            if (!string.IsNullOrEmpty(filter.User) && filter.Visited.HasValue)
             {
                 var valueComparer = filter.Visited.Value ? ValueComparingOperator.In : ValueComparingOperator.NotIn;
-                return new ElementaryPredicate(nameof(Country.VisitedByUsers), valueComparer, filter.UserId.Value);
+                return new ElementaryPredicate(nameof(Country.VisitedByUsers), valueComparer, filter.User);
             }
             return null;
         }

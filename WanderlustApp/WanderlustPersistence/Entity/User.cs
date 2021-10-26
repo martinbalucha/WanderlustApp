@@ -14,13 +14,13 @@ namespace WanderlustPersistence.Entity
         /// <summary>
         /// A username
         /// </summary>
-        [Required, MaxLength(100)]
+        [Required(AllowEmptyStrings = false), MaxLength(100)]
         public string Username { get; set; }
 
         /// <summary>
         /// Password's hash
         /// </summary>
-        [Required, MaxLength(100)]
+        [Required(AllowEmptyStrings = false), MaxLength(100)]
         public string Password { get; set; }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace WanderlustPersistence.Entity
         /// <summary>
         /// A set of regions and subgregions the user has visited
         /// </summary>
-        public ISet<RegionComponent> RegionsVisited { get; set; }
+        public ISet<Region> RegionsVisited { get; set; }
 
         /// <summary>
         /// A set of towns the user has visited

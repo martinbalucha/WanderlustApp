@@ -1,31 +1,40 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using WanderlustInfrastructure.Entity;
 
 namespace WanderlustPersistence.Entity
 {
     /// <summary>
-    /// Represents a region of the country
+    /// Represents a region
     /// </summary>
-    public class Region : RegionComponent
+    public class Region : EntityBase
     {
         /// <summary>
-        /// A collection of subregions in the 
+        /// The name of the region
         /// </summary>
-        public ISet<RegionComponent> Subregions { get; set; }
+        [Required(AllowEmptyStrings = false), MaxLength(50)]
+        public string Name;
 
         /// <summary>
-        /// <inheritdoc/>
+        /// Description of the region
         /// </summary>
-        public override void Add(RegionComponent subregion)
-        {
-            Subregions.Add(subregion);
-        }
+        [MaxLength(2000)]
+        public string Description { get; set; }
 
         /// <summary>
-        /// <inheritdoc/>
+        /// A set of countries the region belongs to
         /// </summary>
-        public override void Remove(RegionComponent subregion)
-        {
-            Subregions.Remove(subregion);
-        }
+        [Required]
+        public Country Country { get; set; }
+
+        /// <summary>
+        /// A set of users who have visited the region
+        /// </summary>
+        public ISet<User> VisitedByUsers { get; set; }        
+
+        /// <summary>
+        /// A set of towns located in the region
+        /// </summary>
+        public ISet<Town> Towns { get; set; }
     }
 }

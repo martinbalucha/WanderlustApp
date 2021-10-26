@@ -1,27 +1,30 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using WanderlustService.DataTransferObject.Filter.Common;
 
 namespace WanderlustService.DataTransferObject.Filter
 {
     /// <summary>
-    /// A filter DTO for countries
+    /// A filter for searching region components
     /// </summary>
-    public class CountryFilterDto : FilterDtoBase
+    public class RegionFilterDto : FilterDtoBase
     {
         /// <summary>
-        /// A name of the country
+        /// The name of the region
         /// </summary>
         public string Name { get; set; }
 
         /// <summary>
-        /// A name of the user who either visited or has not yet visited the country
+        /// The name of the country region belongs to
         /// </summary>
-        public string User { get; set; }
+        public string Country { get; set; }
 
         /// <summary>
-        /// An indicator whether the user has visited the country or not
+        /// 
+        /// </summary>
+        public string User { get; set; } 
+
+        /// <summary>
+        /// Determines whether the user has visited the region
         /// </summary>
         public bool? Visited { get; set; }
     }

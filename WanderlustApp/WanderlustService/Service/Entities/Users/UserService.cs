@@ -33,14 +33,14 @@ namespace WanderlustService.Service.Entities.Users
         /// </summary>
         /// <param name="repository">A repository for CRUD operations</param>
         /// <param name="passwordService">A class for password management</param>
-        /// <param name="query">Query object used for filtering entities</param>
+        /// <param name="queryObject">Query object used for filtering entities</param>
         /// <param name="logger">Logger</param>
-        public UserService(IRepository<User> repository, IPasswordService passwordService, QueryObjectBase<User, UserFilterDto, IQuery<User>> query,
-                            ILogger<UserService> logger)
+        public UserService(IRepository<User> repository, IPasswordService passwordService,
+                           QueryObjectBase<User, UserFilterDto, IQuery<User>> queryObject, ILogger<UserService> logger)
             : base(repository, logger)
         {
             this.passwordService = passwordService;
-            queryObject = query;
+            this.queryObject = queryObject;
         }
 
         /// <summary>

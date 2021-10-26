@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using WanderlustPersistence.Enums;
 
 namespace WanderlustService.DataTransferObject.Entities.User
 {
     /// <summary>
-    /// 
+    /// A DTO for fetched users
     /// </summary>
     public class UserDto
     {
@@ -18,5 +17,10 @@ namespace WanderlustService.DataTransferObject.Entities.User
         /// Username
         /// </summary>
         public string Username { get; set; }
+
+        /// <summary>
+        /// User role
+        /// </summary>
+        public Role Role { get; set; }
     }
 }

@@ -6,7 +6,8 @@ namespace WanderlustInfrastructure.Query.Predicates.Operators
     /// </summary>
     public enum LogicalOperator
     {
-        AND,
-        OR
+        And,
+        Or,
+        Nested
     }
 }

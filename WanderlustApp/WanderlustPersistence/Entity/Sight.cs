@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using WanderlustInfrastructure.Entity;
-using WanderlustPersistence.Enums;
 
 namespace WanderlustPersistence.Entity
 {
@@ -12,14 +11,15 @@ namespace WanderlustPersistence.Entity
         /// <summary>
         /// The name of the sight
         /// </summary>
-        [Required, MaxLength(150)]
+        [Required(AllowEmptyStrings = false), MaxLength(150)]
         public string Name { get; set; }
 
         /// <summary>
-        /// A region where the sight is located
+        /// A region where the sight is located. Some sights may be located outside of the
+        /// towns but for the convenience they will be included in the nearest town of significance
         /// </summary>
         [Required]
-        public RegionComponent Region { get; set; }
+        public Town Town { get; set; }
 
         /// <summary>
         /// A description of the sight

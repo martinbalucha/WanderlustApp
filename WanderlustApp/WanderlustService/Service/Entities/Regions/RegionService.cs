@@ -1,10 +1,13 @@
-﻿using System;
+﻿using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using WanderlustInfrastructure.Query;
+using WanderlustInfrastructure.Repository;
 using WanderlustPersistence.Entity;
 using WanderlustService.DataTransferObject.Filter;
+using WanderlustService.Service.Common;
 using WanderlustService.Service.QueryObject.Common;
 
 namespace WanderlustService.Service.Entities.Regions
@@ -12,32 +15,22 @@ namespace WanderlustService.Service.Entities.Regions
     /// <summary>
     /// An implementation of the <see cref="IRegionService"/>
     /// </summary>
-    public class RegionService : IRegionService
+    public class RegionService : EntityServiceBase<Region>, IRegionService
     {
         /// <summary>
         /// A query object used for filtering users
         /// </summary>
-        private readonly QueryObjectBase<RegionComponent, RegionComponentFilterDto, IQuery<RegionComponent>> queryObject;
+        private readonly QueryObjectBase<Region, RegionFilterDto, IQuery<Region>> queryObject;
 
-
-        public Task CreateAsync(RegionComponent entity)
+        public RegionService(IRepository<Region> repository, ILogger<RegionService> logger,
+                             QueryObjectBase<Region, RegionFilterDto, IQuery<Region>> queryObject) : base(repository, logger)
         {
-            throw new NotImplementedException();
+            this.queryObject = queryObject;
         }
 
-        public Task DeleteAsync(Guid id)
+        public async Task<QueryResult<Region>> FilterAsync(RegionFilterDto filter)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<RegionComponent> FindAsync(Guid id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update(RegionComponent entity)
-        {
-            throw new NotImplementedException();
+            return await queryObject.ExecuteQueryAsync(filter);
         }
     }
 }

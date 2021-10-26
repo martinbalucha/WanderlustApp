@@ -12,7 +12,7 @@ namespace WanderlustPersistence.Entity
         /// <summary>
         /// A name of the food
         /// </summary>
-        [Required]
+        [Required(AllowEmptyStrings = false), MaxLength(50)]
         public string Name { get; set; }
 
         /// <summary>
@@ -30,7 +30,7 @@ namespace WanderlustPersistence.Entity
         /// <summary>
         /// A collection of countries the food is
         /// </summary>
-        public IEnumerable<Country> Country { get; set; }
+        public ISet<Country> Country { get; set; }
 
         /// <summary>
         /// A set of users who have eaten the food
